@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Collections;
 
 // Handles all UI panels: fragment clues & laptop
 public class UIManager : MonoBehaviour
@@ -10,6 +12,9 @@ public class UIManager : MonoBehaviour
     [Header("Fragment UI")]
     public GameObject fragmentPanel;     // Panel for fragment clues
     public TextMeshProUGUI clueText;     // Text inside fragment panel
+    public TextMeshProUGUI feedbackText; // feedback for answer
+
+    public float feedbackDuration = 4f; // duration of feedbackk 
 
     [Header("Laptop UI")]
     public GameObject laptopPanel;       // Laptop coding panel
@@ -57,6 +62,51 @@ public class UIManager : MonoBehaviour
     {
         laptopPanel.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    private List<string> correctAnswers = new List<string>
+    {
+    "www",
+    "WWW"
+    };
+
+    public void CheckAnswer()
+    {
+        string playerSQL = laptopInput.text.Trim();
+        playerSQL = System.Text.RegularExpressions.Regex.Replace(playerSQL, @"\s+", " "); // remove extra spaces
+
+        bool correct = false;
+
+        foreach (string ans in correctAnswers)
+        {
+            if (playerSQL.Equals(ans, System.StringComparison.OrdinalIgnoreCase))
+            {
+                correct = true;
+                break;
+            }
+        }
+
+        if (correct)
+        {
+            feedbackText.text = "Yessir! Level Complete.";
+            feedbackText.color = Color.green;
+
+            // Optional: Trigger next level or win
+            // LevelManager.Instance.CompleteLevel();
+        }
+        else
+        {
+            feedbackText.text = "FAHHHH. Check your fragments.";
+            feedbackText.color = Color.red;
+        }
+        // Start coroutine to hide feedback automatically
+        StartCoroutine(HideFeedbackAfterTime());
+    }
+    private IEnumerator HideFeedbackAfterTime()
+    {
+        feedbackText.gameObject.SetActive(true); // ensure it’s visible
+        yield return new WaitForSecondsRealtime(feedbackDuration);
+        feedbackText.gameObject.SetActive(false);
     }
     public void UpdateFragmentHotbar()
     {
