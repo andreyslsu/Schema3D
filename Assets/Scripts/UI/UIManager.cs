@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using StarterAssets;
 
 // Handles all UI panels: fragment clues & laptop
 public class UIManager : MonoBehaviour
@@ -23,6 +24,16 @@ public class UIManager : MonoBehaviour
     [Header("Hotbar UI")]
     public Transform hotbarContainer; // HotbarPanel transform
     public GameObject hotbarSlotPrefab; // The prefab TMP text
+
+    [Header("Pause Menu")]
+    public GameObject pauseMenuPanel;
+
+
+    // Example settings variables
+    public float masterVolume = 1f;
+    public float mouseSensitivity = 1f;
+
+    private bool isPaused = false;
 
     private void Awake()
     {
@@ -63,7 +74,7 @@ public class UIManager : MonoBehaviour
         laptopPanel.SetActive(false);
         Time.timeScale = 1f;
     }
-
+    //check answers w/ feedback
     private List<string> correctAnswers = new List<string>
     {
     "www",
@@ -131,5 +142,58 @@ public class UIManager : MonoBehaviour
                 ShowFragment(capturedClue);
             });
         }
+    }
+    //Resume
+    public void TogglePause()
+    {
+        if (isPaused)
+            ResumeGame();
+        else
+            PauseGame();
+    }
+
+    public void PauseGame()
+    {
+        pauseMenuPanel.SetActive(true);
+        Time.timeScale = 0f; // freeze game
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        isPaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenuPanel.SetActive(false);
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        isPaused = false;
+    }
+
+    // Called when volume slider changes
+    public void SetVolume(float value)
+    {
+        masterVolume = value;
+        AudioListener.volume = masterVolume;
+    }
+
+    // Called when sensitivity slider changes
+    public void SetSensitivity(float value)
+    {
+        if (FirstPersonController.Instance != null)
+        {
+            // Apply a base multiplier for mobile touch input
+            FirstPersonController.Instance.RotationSpeed = value;
+        }
+    }
+
+    public void ExitGame()
+    {
+        // For PC
+    #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
     }
 }
