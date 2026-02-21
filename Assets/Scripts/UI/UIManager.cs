@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using StarterAssets;
+using UnityEngine.SceneManagement;
 
 // Handles all UI panels: fragment clues & laptop
 public class UIManager : MonoBehaviour
@@ -186,14 +187,8 @@ public class UIManager : MonoBehaviour
             FirstPersonController.Instance.RotationSpeed = value;
         }
     }
-
-    public void ExitGame()
+    public void ReturnToMainMenu()
     {
-        // For PC
-    #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
-            Application.Quit();
-    #endif
+        SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with your scene name
     }
 }
