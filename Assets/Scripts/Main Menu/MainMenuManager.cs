@@ -5,15 +5,27 @@ public class MainMenuManager : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject settingsPanel; // Settings UI panel
+    public GameObject levelSelectPanel;   // Level selection panel
 
-    // =========================================
-    // START GAME
-    // Loads Level 1
-    // =========================================
-    public void StartGame()
+
+    // OPEN LEVEL SELECT
+    // Shows level selection panel
+    public void OpenLevelSelect()
     {
-        SceneManager.LoadScene("Level1"); 
-        // Make sure scene name matches exactly
+        levelSelectPanel.SetActive(true);
+    }
+    // CLOSE LEVEL SELECT
+    // Hides level selection panel
+    // =========================================
+    public void CloseLevelSelect()
+    {
+        levelSelectPanel.SetActive(false);
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("Level1");
+
     }
 
     // =========================================

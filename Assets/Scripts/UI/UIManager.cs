@@ -42,9 +42,13 @@ public class UIManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
+        Time.timeScale = 1f;
+
         // Hide all panels at start
         fragmentPanel.SetActive(false);
         laptopPanel.SetActive(false);
+
+       
     }
 
     // Show fragment clue panel
