@@ -29,10 +29,9 @@ public class UIManager : MonoBehaviour
     [Header("Pause Menu")]
     public GameObject pauseMenuPanel;
 
-
-    // Example settings variables
-    public float masterVolume = 1f;
-    public float mouseSensitivity = 1f;
+    [Header("Settings Sliders")]
+    public Slider volumeSlider;      // Drag pause menu volume slider here
+    public Slider sensitivitySlider; // Drag pause menu sensitivity slider here
 
     private bool isPaused = false;
 
@@ -160,10 +159,21 @@ public class UIManager : MonoBehaviour
     public void PauseGame()
     {
         pauseMenuPanel.SetActive(true);
-        Time.timeScale = 0f; // freeze game
+        Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         isPaused = true;
+
+        // Register and sync pause menu sliders when pausing
+        if (SettingsManager.Instance != null)
+        {
+            // Register sliders first so SettingsManager knows which ones to update
+            SettingsManager.Instance.RegisterSliders(volumeSlider, sensitivitySlider);
+            // Then sync them to saved PlayerPrefs values
+            SettingsManager.Instance.SyncSlidersToSaved();
+        }
+        else
+            Debug.LogWarning("SettingsManager not found!");
     }
 
     public void ResumeGame()
@@ -175,22 +185,25 @@ public class UIManager : MonoBehaviour
         isPaused = false;
     }
 
-    // Called when volume slider changes
     public void SetVolume(float value)
     {
-        masterVolume = value;
-        AudioListener.volume = masterVolume;
+        if (SettingsManager.Instance != null)
+            SettingsManager.Instance.SetVolume(value);
+        else
+            Debug.LogWarning("SettingsManager not found!");
     }
 
-    // Called when sensitivity slider changes
     public void SetSensitivity(float value)
     {
-        if (FirstPersonController.Instance != null)
-        {
-            // Apply a base multiplier for mobile touch input
-            FirstPersonController.Instance.RotationSpeed = value;
-        }
+        // If this never prints, slider is not connected to UIManager
+        Debug.Log("UIManager SetSensitivity called: " + value);
+
+        if (SettingsManager.Instance != null)
+            SettingsManager.Instance.SetSensitivity(value);
+        else
+            Debug.LogWarning("SettingsManager not found!");
     }
+
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with your scene name

@@ -808,8 +808,8 @@ Transform:
   m_GameObject: {fileID: 333260725}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3599997, y: 3.543, z: -6.1011}
-  m_LocalScale: {x: 47.73134, y: 0.5, z: 35.9415}
+  m_LocalPosition: {x: 2.36, y: 3.543, z: -6.1011}
+  m_LocalScale: {x: 55.74543, y: 0.58395, z: 41.976078}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5031,10 +5031,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   fragmentPanel: {fileID: 755371012}
   clueText: {fileID: 409977711}
+  feedbackText: {fileID: 0}
+  feedbackDuration: 4
   laptopPanel: {fileID: 1297517063}
   laptopInput: {fileID: 1100071597}
   hotbarContainer: {fileID: 529488929}
   hotbarSlotPrefab: {fileID: 8542411237025197504, guid: 7ab664eb42cb01c46ba9617ab37444f2, type: 3}
+  pauseMenuPanel: {fileID: 0}
+  masterVolume: 1
+  mouseSensitivity: 1
 --- !u!4 &1546226079
 Transform:
   m_ObjectHideFlags: 0

@@ -98,6 +98,7 @@ namespace StarterAssets
 			}
 		}
 
+        /*
 		private void Start()
 		{
 			_controller = GetComponent<CharacterController>();
@@ -112,8 +113,29 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 		}
+		*/
+        private void Start()
+        {
+            _controller = GetComponent<CharacterController>();
+            _input = GetComponent<StarterAssetsInputs>();
+#if ENABLE_INPUT_SYSTEM
+            _playerInput = GetComponent<PlayerInput>();
+#else
+    Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+#endif
 
-		private void Update()
+            // reset our timeouts on start
+            _jumpTimeoutDelta = JumpTimeout;
+            _fallTimeoutDelta = FallTimeout;
+
+            // ADD THIS: Load saved sensitivity if player set it before
+            if (PlayerPrefs.HasKey("MouseSensitivity"))
+            {
+                RotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity");
+            }
+        }
+
+        private void Update()
 		{
 			JumpAndGravity();
 			GroundedCheck();
@@ -132,7 +154,7 @@ namespace StarterAssets
 			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 		}
 
-		private void CameraRotation()
+        /*private void CameraRotation()
 		{
 			// if there is an input
 			if (_input.look.sqrMagnitude >= _threshold)
@@ -152,9 +174,29 @@ namespace StarterAssets
 				// rotate the player left and right
 				transform.Rotate(Vector3.up * _rotationVelocity);
 			}
-		}
+		}*/
+		//changed for sens adjustment
+        private void CameraRotation()
+        {
+            if (_input.look.sqrMagnitude >= _threshold)
+            {
+                // Mouse uses raw input, mobile uses 0.1f instead of Time.deltaTime
+                // Time.deltaTime was making mobile sensitivity nearly zero
+                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : 0.05f;
 
-		private void Move()
+                _cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
+                _rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+
+                _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+
+                CinemachineCameraTarget.transform.localRotation =
+                    Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+
+                transform.Rotate(Vector3.up * _rotationVelocity);
+            }
+        }
+
+        private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
