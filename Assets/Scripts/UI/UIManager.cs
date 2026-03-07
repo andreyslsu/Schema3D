@@ -14,13 +14,6 @@ public class UIManager : MonoBehaviour
     [Header("Fragment UI")]
     public GameObject fragmentPanel;     // Panel for fragment clues
     public TextMeshProUGUI clueText;     // Text inside fragment panel
-    public TextMeshProUGUI feedbackText; // feedback for answer
-
-    public float feedbackDuration = 4f; // duration of feedbackk 
-
-    [Header("Laptop UI")]
-    public GameObject laptopPanel;       // Laptop coding panel
-    public TMP_InputField laptopInput;   // Input field for typing code
 
     [Header("Hotbar UI")]
     public Transform hotbarContainer; // HotbarPanel transform
@@ -45,9 +38,8 @@ public class UIManager : MonoBehaviour
 
         // Hide all panels at start
         fragmentPanel.SetActive(false);
-        laptopPanel.SetActive(false);
+       // laptopPanel.SetActive(false);
 
-       
     }
 
     // Show fragment clue panel
@@ -65,64 +57,24 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f; // Resume game
     }
 
-    // Show laptop coding panel
+    // REPLACE WITH THIS
+    // Now just forwards to LaptopManager
     public void ShowLaptop()
     {
-        laptopPanel.SetActive(true);
-        Time.timeScale = 0f; // Pause game
+        if (LaptopManager.Instance != null)
+            LaptopManager.Instance.OpenLaptop();
+        else
+            Debug.LogWarning("LaptopManager not found!");
     }
 
-    // Close laptop panel
     public void CloseLaptop()
     {
-        laptopPanel.SetActive(false);
-        Time.timeScale = 1f;
-    }
-    //check answers w/ feedback
-    private List<string> correctAnswers = new List<string>
-    {
-    "www",
-    "WWW"
-    };
-
-    public void CheckAnswer()
-    {
-        string playerSQL = laptopInput.text.Trim();
-        playerSQL = System.Text.RegularExpressions.Regex.Replace(playerSQL, @"\s+", " "); // remove extra spaces
-
-        bool correct = false;
-
-        foreach (string ans in correctAnswers)
-        {
-            if (playerSQL.Equals(ans, System.StringComparison.OrdinalIgnoreCase))
-            {
-                correct = true;
-                break;
-            }
-        }
-
-        if (correct)
-        {
-            feedbackText.text = "Yessir! Level Complete.";
-            feedbackText.color = Color.green;
-
-            // Optional: Trigger next level or win
-            // LevelManager.Instance.CompleteLevel();
-        }
+        if (LaptopManager.Instance != null)
+            LaptopManager.Instance.CloseLaptop();
         else
-        {
-            feedbackText.text = "FAHHHH. Check your fragments.";
-            feedbackText.color = Color.red;
-        }
-        // Start coroutine to hide feedback automatically
-        StartCoroutine(HideFeedbackAfterTime());
+            Debug.LogWarning("LaptopManager not found!");
     }
-    private IEnumerator HideFeedbackAfterTime()
-    {
-        feedbackText.gameObject.SetActive(true); // ensure it’s visible
-        yield return new WaitForSecondsRealtime(feedbackDuration);
-        feedbackText.gameObject.SetActive(false);
-    }
+    
     public void UpdateFragmentHotbar()
     {
         foreach (Transform child in hotbarContainer)
