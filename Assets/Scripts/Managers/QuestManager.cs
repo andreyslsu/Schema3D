@@ -48,13 +48,18 @@ public class QuestManager : MonoBehaviour
         // Auto open quest panel at start so player knows what to do
         questPanel.SetActive(true);
 
-        StartCoroutine(AutoCloseQuestPanel());
+        // Stop score tracking until player closes quest panel
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.StopTracking();
 
+        StartCoroutine(AutoCloseQuestPanel());
     }
     private IEnumerator AutoCloseQuestPanel()
     {
-        // Show for 3 seconds then auto close
+        // Wait for player to read quests
         yield return new WaitForSeconds(3f);
+
+        // CloseQuestPanel already starts score tracking
         CloseQuestPanel();
     }
 
@@ -72,6 +77,14 @@ public class QuestManager : MonoBehaviour
     public void CloseQuestPanel()
     {
         questPanel.SetActive(false);
+
+        // Start score tracking only when player closes quest panel
+        // This way timer doesnt run while player is reading quests
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.StartTracking();
+            Debug.Log("Score tracking started after quest panel closed!");
+        }
     }
 
     // =========================================

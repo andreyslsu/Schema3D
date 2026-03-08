@@ -185,9 +185,17 @@ public class LaptopManager : MonoBehaviour
             // Shake the panel for extra feedback
             StartCoroutine(ShakePanel());
 
-            // Track error for scoring
-            /*  if (ScoreManager.Instance != null)
-                  ScoreManager.Instance.AddError(); */ // Score manager standby 11111222333
+
+            if (ScoreManager.Instance != null)
+            {
+                ScoreManager.Instance.AddError();
+
+                // Force immediate score UI update after error
+                if (ScoreUI.Instance != null)
+                    ScoreUI.Instance.ForceRefresh();
+            }
+            else
+                Debug.LogWarning("ScoreManager not found!");
         }
     }
 
@@ -250,7 +258,6 @@ private IEnumerator ShakePanel()
     // FEEDBACK
     // =========================================
 
-    // Shows feedback text then hides it after duration
     private void ShowFeedback(string message, Color color)
     {
         if (feedbackText == null)
@@ -268,7 +275,6 @@ private IEnumerator ShakePanel()
         StartCoroutine(HideFeedback());
     }
 
-    // Hides feedback after set duration
     private IEnumerator HideFeedback()
     {
         yield return new WaitForSecondsRealtime(feedbackDuration);

@@ -38,8 +38,16 @@ public class UIManager : MonoBehaviour
 
         // Hide all panels at start
         fragmentPanel.SetActive(false);
-       // laptopPanel.SetActive(false);
+       //laptopPanel.SetActive(false);
 
+    }
+    private void Start()
+    {
+        // Start score tracking when level loads
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.StartTracking();
+        else
+            Debug.LogWarning("ScoreManager not found!");
     }
 
     // Show fragment clue panel
@@ -57,8 +65,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f; // Resume game
     }
 
-    // REPLACE WITH THIS
-    // Now just forwards to LaptopManager
     public void ShowLaptop()
     {
         if (LaptopManager.Instance != null)

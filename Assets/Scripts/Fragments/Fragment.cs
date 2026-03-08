@@ -20,7 +20,13 @@ public class Fragment : Interactable
         else
             Debug.LogWarning("QuestManager not found!");
 
-        // Hide fragment from scene after pickup
-        gameObject.SetActive(false); // 
+        // Track score bonus for fragment collection speed
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.OnFragmentCollected();
+        else
+            Debug.LogWarning("ScoreManager not found!");
+
+        // Hide fragment from scene
+        gameObject.SetActive(false);
     }
 }
