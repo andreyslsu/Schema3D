@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-// Handles all laptop puzzle logic separately from UIManager
-// This makes it easy to have different answers per level
+
 public class LaptopManager : MonoBehaviour
 {
     public static LaptopManager Instance;
@@ -197,6 +196,9 @@ public class LaptopManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1.5f);
         CloseLaptop();
+
+        if (QuestManager.Instance != null)
+            QuestManager.Instance.OnLaptopQuestComplete();
 
         // Show level complete UI
         /* if (LevelCompleteUI.Instance != null)

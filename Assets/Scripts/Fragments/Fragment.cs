@@ -8,13 +8,19 @@ public class Fragment : Interactable
 
     public override void Interact()
     {
-        // Add fragment to inventory
+        // Add to inventory
         InventoryManager.Instance.AddFragment(fragmentClue);
 
-        // Show fragment clue panel via UIManager
+        // Show fragment clue panel
         UIManager.Instance.ShowFragment(fragmentClue);
 
-        // Hide the fragment object in the scene after pickup
-        gameObject.SetActive(false);
+        // Update quest tracker
+        if (QuestManager.Instance != null)
+            QuestManager.Instance.OnFragmentCollected();
+        else
+            Debug.LogWarning("QuestManager not found!");
+
+        // Hide fragment from scene after pickup
+        gameObject.SetActive(false); // 
     }
 }
