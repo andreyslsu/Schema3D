@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using System.Collections;
+
 
 // Manages quest progression and UI panels
 public class QuestManager : MonoBehaviour
@@ -48,14 +47,6 @@ public class QuestManager : MonoBehaviour
         questPanel.SetActive(false); // to make sure its close bruh
 
     }
-    private IEnumerator AutoCloseQuestPanel()
-    {
-        // Wait for player to read quests
-        yield return new WaitForSeconds(3f);
-
-        // CloseQuestPanel already starts score tracking
-        CloseQuestPanel();
-    }
 
     // =========================================
     // OPEN / CLOSE QUEST PANEL
@@ -71,14 +62,8 @@ public class QuestManager : MonoBehaviour
     public void CloseQuestPanel()
     {
         questPanel.SetActive(false);
-
-        // Start score tracking only when player closes quest panel
-        // This way timer doesnt run while player is reading quests
-        if (ScoreManager.Instance != null)
-        {
-            ScoreManager.Instance.StartTracking();
-            Debug.Log("Score tracking started after quest panel closed!");
-        }
+        // Score tracking is handled by IntroQuestPanel
+        // Do not touch ScoreManager here to avoid resets
     }
 
     // =========================================

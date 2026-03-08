@@ -43,11 +43,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        // Start score tracking when level loads
-        if (ScoreManager.Instance != null)
-            ScoreManager.Instance.StartTracking();
-        else
-            Debug.LogWarning("ScoreManager not found!");
+        
     }
 
     // Show fragment clue panel
