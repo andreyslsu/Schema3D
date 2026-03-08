@@ -125,6 +125,12 @@ public class ScoreManager : MonoBehaviour
         else return 0; // 0 stars
     }
 
+    public void ResumeTracking()
+    {
+        isTracking = true;
+        Debug.Log("Score tracking resumed!");
+    }
+
     // =========================================
     // GETTERS
     // =========================================
@@ -140,4 +146,6 @@ public class ScoreManager : MonoBehaviour
 
     // Returns whether tracking is active
     public bool IsTracking() => isTracking;
+
+
 }

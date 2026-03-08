@@ -45,14 +45,8 @@ public class QuestManager : MonoBehaviour
         // Set initial count
         UpdateQuest1UI();
 
-        // Auto open quest panel at start so player knows what to do
-        questPanel.SetActive(true);
+        questPanel.SetActive(false); // to make sure its close bruh
 
-        // Stop score tracking until player closes quest panel
-        if (ScoreManager.Instance != null)
-            ScoreManager.Instance.StopTracking();
-
-        StartCoroutine(AutoCloseQuestPanel());
     }
     private IEnumerator AutoCloseQuestPanel()
     {
