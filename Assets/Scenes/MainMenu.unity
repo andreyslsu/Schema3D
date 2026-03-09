@@ -4930,8 +4930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3910516a6048af42a46b9c576c69858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
-  volumeSlider: {fileID: 0}
-  sensitivitySlider: {fileID: 0}
+  volumeSlider: {fileID: 1426848534}
+  sensitivitySlider: {fileID: 670785360}
   defaultVolume: 1
   defaultSensitivity: 2
 --- !u!4 &2005773210

@@ -51,14 +51,14 @@ public class UIManager : MonoBehaviour
     {
         fragmentPanel.SetActive(true); // Activate panel
         clueText.text = clue;           // Set clue text
-        Time.timeScale = 0f;            // Pause game
+        //Time.timeScale = 0f;            // Pause game
     }
 
     // Close fragment panel
     public void CloseFragment()
     {
         fragmentPanel.SetActive(false);
-        Time.timeScale = 1f; // Resume game
+        //Time.timeScale = 1f; // Resume game
     }
 
     public void ShowLaptop()
