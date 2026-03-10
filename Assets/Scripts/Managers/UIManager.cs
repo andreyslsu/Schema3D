@@ -15,9 +15,17 @@ public class UIManager : MonoBehaviour
     public GameObject fragmentPanel;     // Panel for fragment clues
     public TextMeshProUGUI clueText;     // Text inside fragment panel
 
-    [Header("Hotbar UI")]
-    public Transform hotbarContainer; // HotbarPanel transform
-    public GameObject hotbarSlotPrefab; // The prefab TMP text
+    [Header("Keycard UI")]
+    public GameObject keycardPanel;          // Panel showing keycard info
+    public TextMeshProUGUI keycardText;      // Text inside keycard panel
+    public GameObject keycardHotbarSlot;
+
+    public Transform hotbarContainer;        // HotbarPanel transform
+    public GameObject hotbarSlotPrefab;      // Fragment slot prefab
+    public GameObject keycardSlotPrefab;     // Keycard slot prefab (separate design)
+
+    // Tracks keycard slot separately
+    private GameObject activeKeycardSlot;
 
     [Header("Pause Menu")]
     public GameObject pauseMenuPanel;
@@ -76,31 +84,98 @@ public class UIManager : MonoBehaviour
         else
             Debug.LogWarning("LaptopManager not found!");
     }
-    
+
     public void UpdateFragmentHotbar()
     {
+        // Only destroy fragment slots not keycard slot
         foreach (Transform child in hotbarContainer)
-            Destroy(child.gameObject);
+        {
+            // Skip keycard slot when clearing
+            if (activeKeycardSlot != null && child.gameObject == activeKeycardSlot)
+                continue;
 
+            Destroy(child.gameObject);
+        }
+
+        // Rebuild fragment slots
         foreach (string clue in InventoryManager.Instance.GetFragments())
         {
             GameObject slotObj = Instantiate(hotbarSlotPrefab, hotbarContainer);
 
             Button button = slotObj.GetComponent<Button>();
-            TMPro.TextMeshProUGUI text = slotObj.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            TextMeshProUGUI text = slotObj.GetComponentInChildren<TextMeshProUGUI>();
 
-            // Short label for button
+            // Show short label on button
+            // e.g "Fragment 1" or first 10 chars of clue
             text.text = clue.Length > 10 ? clue.Substring(0, 10) + "..." : clue;
 
             // Capture clue for button click
             string capturedClue = clue;
-
-            button.onClick.AddListener(() =>
-            {
-                ShowFragment(capturedClue);
-            });
+            button.onClick.AddListener(() => ShowFragment(capturedClue));
         }
     }
+
+    public void ShowKeycardPanel()
+    {
+        if (keycardPanel != null)
+        {
+            keycardPanel.SetActive(true);
+            Time.timeScale = 0f;
+
+            if (keycardText != null)
+                keycardText.text = "ACCESS KEYCARD\n\nFind the elevator\nand insert this keycard\nto proceed.";
+        }
+        else
+            Debug.LogWarning("KeycardPanel is NULL!");
+    }
+
+    public void CloseKeycardPanel()
+    {
+        if (keycardPanel != null)
+            keycardPanel.SetActive(false);
+
+        Time.timeScale = 1f;
+    }
+    public void AddKeycardToHotbar()
+    {
+        // Dont add twice
+        if (activeKeycardSlot != null) return;
+
+        if (keycardSlotPrefab == null)
+        {
+            Debug.LogWarning("KeycardSlotPrefab is NULL!");
+            return;
+        }
+
+        // Instantiate keycard slot in hotbar
+        activeKeycardSlot = Instantiate(keycardSlotPrefab, hotbarContainer);
+
+        Button button = activeKeycardSlot.GetComponent<Button>();
+        TextMeshProUGUI text = activeKeycardSlot
+            .GetComponentInChildren<TextMeshProUGUI>();
+
+        // Set label
+        if (text != null)
+            text.text = "Keycard";
+
+        // Open keycard panel on click
+        if (button != null)
+            button.onClick.AddListener(() => ShowKeycardPanel());
+
+        Debug.Log("Keycard added to hotbar!");
+    }
+
+    // Destroys keycard slot from hotbar
+    public void RemoveKeycardFromHotbar()
+    {
+        if (activeKeycardSlot != null)
+        {
+            Destroy(activeKeycardSlot);
+            activeKeycardSlot = null;
+            Debug.Log("Keycard removed from hotbar!");
+        }
+    }
+
     //Resume
     public void TogglePause()
     {

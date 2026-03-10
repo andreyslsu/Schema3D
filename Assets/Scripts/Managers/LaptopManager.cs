@@ -205,18 +205,19 @@ public class LaptopManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1.5f);
         CloseLaptop();
 
+        // Mark quest 2 as complete
         if (QuestManager.Instance != null)
             QuestManager.Instance.OnLaptopQuestComplete();
 
-        // Show level complete UI
-        /* if (LevelCompleteUI.Instance != null)
-            LevelCompleteUI.Instance.ShowLevelComplete(currentLevelData);
+        // Give player keycard
+        if (Keycard.Instance != null)
+            Keycard.Instance.GiveKeycard();
         else
-            Debug.LogWarning("LevelCompleteUI not found!"); */ // levelcompleteui standby  111112223333
+            Debug.LogWarning("Keycard not found!");
     }
 
     // Flashes the laptop panel a color then returns to normal
-private IEnumerator FlashPanel(Color flashColor)
+    private IEnumerator FlashPanel(Color flashColor)
 {
     if (laptopPanelImage == null) yield break;
 
@@ -368,4 +369,6 @@ private IEnumerator ShakePanel()
         isHighlighting = false;
         expectedWords = null;
     }
+
+
 }
