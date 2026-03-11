@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     // Tracks keycard slot separately
     private GameObject activeKeycardSlot;
 
+    [Header("Interact Label")]
+    public TextMeshProUGUI interactLabel;
+
     [Header("Pause Menu")]
     public GameObject pauseMenuPanel;
 
@@ -174,6 +177,21 @@ public class UIManager : MonoBehaviour
             activeKeycardSlot = null;
             Debug.Log("Keycard removed from hotbar!");
         }
+    }
+    // show interact label need para ishow pag naka hover
+    public void ShowInteractLabel(string text)
+    {
+        if (interactLabel != null)
+        {
+            interactLabel.gameObject.SetActive(true);
+            interactLabel.text = text;
+        }
+    }
+
+    public void HideInteractLabel()
+    {
+        if (interactLabel != null)
+            interactLabel.gameObject.SetActive(false);
     }
 
     //Resume

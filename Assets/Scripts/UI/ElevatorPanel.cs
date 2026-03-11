@@ -1,26 +1,51 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+using UnityEngine.UI;
 
-// Attach this to ANY object you want to act as keycard reader
-// Works on elevator panel, door panel, terminal, anything
 public class ElevatorPanel : Interactable
 {
-    [Header("Panel UI")]
-    public GameObject panelUI;               // UI that shows when interacting
-    public TextMeshProUGUI statusText;        // Shows status text
-
     [Header("References")]
-    public Elevator elevator;                 // Drag elevator here
+    public Elevator elevator;
+
+    [Header("Panel Image")]
+    public Image panelImage;
+    public float flashDuration = 0.5f;
 
     [Header("Feedback Colors")]
     public Color lockedColor = Color.red;
     public Color unlockedColor = Color.green;
 
     [Header("Messages")]
-    public string noKeycardMessage = "Access Denied!\nSolve the laptop puzzle first.";
+    public string noKeycardMessage = "Access Denied!";
     public string accessGrantedMessage = "Access Granted!";
 
-    // Called when player interacts with this object
+    private Color originalPanelColor;
+    private bool showingStatus = false; // Prevents label hiding during status
+
+    private void Start()
+    {
+        if (panelImage != null)
+            originalPanelColor = panelImage.color;
+    }
+
+    // Override OnLoseFocus to prevent hiding during status
+    public override void OnLoseFocus()
+    {
+        // Only hide label if not showing status
+        if (!showingStatus)
+        {
+            if (rend != null && originalMaterial != null)
+                rend.material = originalMaterial;
+
+            if (UIManager.Instance != null)
+                UIManager.Instance.HideInteractLabel();
+
+            if (labelObject != null)
+                labelObject.SetActive(false);
+        }
+    }
+
     public override void Interact()
     {
         if (Keycard.Instance == null)
@@ -35,45 +60,82 @@ public class ElevatorPanel : Interactable
             OnKeycardDenied();
     }
 
-    // Player has keycard
     private void OnKeycardAccepted()
     {
-        // Use keycard
         Keycard.Instance.UseKeycard();
 
-        // Update status
-        if (statusText != null)
-        {
-            statusText.text = accessGrantedMessage;
-            statusText.color = unlockedColor;
-        }
+        // Show status and keep visible
+        StartCoroutine(ShowStatus(accessGrantedMessage, unlockedColor));
 
-        // Show panel UI briefly
-        if (panelUI != null)
-            panelUI.SetActive(true);
+        // Flash green
+        if (panelImage != null)
+            StartCoroutine(FlashPanel(unlockedColor));
 
-        // Open elevator
-        if (elevator != null)
-            elevator.OpenElevator();
-        else
-            Debug.LogWarning("Elevator not assigned!");
+        StartCoroutine(OpenElevatorAfterFlash());
 
         Debug.Log("Keycard accepted!");
     }
 
-    // Player has no keycard
     private void OnKeycardDenied()
     {
-        // Show panel UI with denied message
-        if (panelUI != null)
-            panelUI.SetActive(true);
+        // Show status and keep visible briefly
+        StartCoroutine(ShowStatus(noKeycardMessage, lockedColor));
 
-        if (statusText != null)
+        // Flash red
+        if (panelImage != null)
+            StartCoroutine(FlashPanel(lockedColor));
+
+        Debug.Log("No keycard!");
+    }
+
+    // Shows status text for duration then resets
+    private IEnumerator ShowStatus(string message, Color color)
+    {
+        showingStatus = true;
+
+        // Show label with status
+        if (labelObject != null)
+            labelObject.SetActive(true);
+
+        if (labelText != null)
         {
-            statusText.text = noKeycardMessage;
-            statusText.color = lockedColor;
+            labelText.text = message;
+            labelText.color = color;
         }
 
-        Debug.Log("No keycard! Solve laptop first!");
+        // Keep showing for 2 seconds
+        yield return new WaitForSeconds(2f);
+
+        // Reset label text back to default
+        if (labelText != null)
+        {
+            labelText.text = interactLabel;
+            labelText.color = Color.white;
+        }
+
+        // Hide label
+        if (labelObject != null)
+            labelObject.SetActive(false);
+
+        showingStatus = false;
+    }
+
+    private IEnumerator FlashPanel(Color flashColor)
+    {
+        if (panelImage == null) yield break;
+
+        panelImage.color = flashColor;
+        yield return new WaitForSeconds(flashDuration);
+        panelImage.color = originalPanelColor;
+    }
+
+    private IEnumerator OpenElevatorAfterFlash()
+    {
+        yield return new WaitForSeconds(flashDuration);
+
+        if (elevator != null)
+            elevator.OpenElevator();
+        else
+            Debug.LogWarning("Elevator not assigned!");
     }
 }
