@@ -76,8 +76,19 @@ public class Elevator : MonoBehaviour
     // Triggered when player walks into elevator
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-        if (!isOpen) return;
+        Debug.Log("Something entered trigger: " + other.name);
+
+        if (!other.CompareTag("Player"))
+        {
+            Debug.Log("Not player, ignoring");
+            return;
+        }
+
+        if (!isOpen)
+        {
+            Debug.Log("Elevator not open yet!");
+            return;
+        }
 
         Debug.Log("Player entered elevator!");
         StartCoroutine(TriggerLevelComplete());
