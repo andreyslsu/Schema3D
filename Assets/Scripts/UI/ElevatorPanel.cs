@@ -93,7 +93,7 @@ public class ElevatorPanel : Interactable
     {
         showingStatus = true;
 
-        // Show label with status
+        // Show world space label
         if (labelObject != null)
             labelObject.SetActive(true);
 
@@ -103,19 +103,26 @@ public class ElevatorPanel : Interactable
             labelText.color = color;
         }
 
-        // Keep showing for 2 seconds
+        // Show HUD label with status
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowInteractLabel(message);
+
         yield return new WaitForSeconds(2f);
 
-        // Reset label text back to default
+        // Reset world space label
         if (labelText != null)
         {
             labelText.text = interactLabel;
             labelText.color = Color.white;
         }
 
-        // Hide label
+        // Hide world space label
         if (labelObject != null)
             labelObject.SetActive(false);
+
+        // Hide HUD label
+        if (UIManager.Instance != null)
+            UIManager.Instance.HideInteractLabel();
 
         showingStatus = false;
     }

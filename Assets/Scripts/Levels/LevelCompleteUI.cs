@@ -84,6 +84,13 @@ public class LevelCompleteUI : MonoBehaviour
         if (ScoreManager.Instance != null)
             ScoreManager.Instance.StopTracking();
 
+        // Hide hotbar and pause button
+        if (UIManager.Instance != null)
+            UIManager.Instance.HideGameplayUI();
+
+        // Show panel
+        levelCompletePanel.SetActive(true);
+
         // Show cursor for buttons
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -416,5 +423,9 @@ public class LevelCompleteUI : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         levelCompletePanel.SetActive(false);
+
+        // Show gameplay UI again if retrying
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowGameplayUI();
     }
 }

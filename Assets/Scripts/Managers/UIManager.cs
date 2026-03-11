@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -33,6 +33,10 @@ public class UIManager : MonoBehaviour
     [Header("Pause Menu")]
     public GameObject pauseMenuPanel;
 
+    [Header("Gameplay UI")]
+    public GameObject hotbarCanvas;      // drag your hotbar canvas ✓
+    public GameObject pauseButton;
+
     [Header("Settings Sliders")]
     public Slider volumeSlider;      // Drag pause menu volume slider here
     public Slider sensitivitySlider; // Drag pause menu sensitivity slider here
@@ -60,9 +64,9 @@ public class UIManager : MonoBehaviour
     // Show fragment clue panel
     public void ShowFragment(string clue)
     {
-        fragmentPanel.SetActive(true); // Activate panel
-        clueText.text = clue;           // Set clue text
-        //Time.timeScale = 0f;            // Pause game
+        fragmentPanel.SetActive(true);
+        clueText.text = clue;
+        HideInteractLabel(); // Hide label when panel opens 
     }
 
     // Close fragment panel
@@ -78,6 +82,8 @@ public class UIManager : MonoBehaviour
             LaptopManager.Instance.OpenLaptop();
         else
             Debug.LogWarning("LaptopManager not found!");
+
+        HideInteractLabel(); // Hide label when laptop opens 
     }
 
     public void CloseLaptop()
@@ -192,6 +198,24 @@ public class UIManager : MonoBehaviour
     {
         if (interactLabel != null)
             interactLabel.gameObject.SetActive(false);
+    }
+
+    public void HideGameplayUI()
+    {
+        if (hotbarCanvas != null)
+            hotbarCanvas.SetActive(false);
+
+        if (pauseButton != null)
+            pauseButton.SetActive(false);
+    }
+
+    public void ShowGameplayUI()
+    {
+        if (hotbarCanvas != null)
+            hotbarCanvas.SetActive(true);
+
+        if (pauseButton != null)
+            pauseButton.SetActive(true);
     }
 
     //Resume
