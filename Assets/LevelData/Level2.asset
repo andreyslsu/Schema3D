@@ -10,20 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da4da53459845da47b814a210a64462e, type: 3}
-  m_Name: Level1
+  m_Name: Level2
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  levelName: Level 1
-  nextLevelScene: Level2
+  levelName: Level 2
+  nextLevelScene: Level3
   resultImage: {fileID: 0}
   correctAnswers:
-  - www
-  - WWW
-  - '"www"'
-  - 'wew
-
-    wew
-
-    wew
-
-    wew'
+  - hello
+  - helloo
+  - shazam
   fragmentsRequired: 3

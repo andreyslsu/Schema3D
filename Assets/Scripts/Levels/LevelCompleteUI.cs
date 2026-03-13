@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -48,10 +48,9 @@ public class LevelCompleteUI : MonoBehaviour
 
     private void Start()
     {
-        // Hide everything at start
         levelCompletePanel.SetActive(false);
 
-        // Fade overlay starts fully transparent
+        // Hide fade overlay
         if (fadeOverlay != null)
         {
             Color c = fadeOverlay.color;
@@ -60,7 +59,10 @@ public class LevelCompleteUI : MonoBehaviour
             fadeOverlay.gameObject.SetActive(false);
         }
 
-        // Wire up buttons
+        // Hide ALL results immediately at start
+        // So nothing shows before animation plays
+        SetAllResultsVisible(false);
+
         if (nextLevelButton != null)
             nextLevelButton.onClick.AddListener(LoadNextLevel);
 
@@ -349,31 +351,26 @@ public class LevelCompleteUI : MonoBehaviour
     {
         if (currentLevelData == null) return;
 
-        string levelKey = currentLevelData.levelName;
+        string levelName = currentLevelData.levelName;
+        int finalScore = ScoreManager.Instance.CalculateFinalScore();
+        int stars = ScoreManager.Instance.GetStarRating();
 
         // Save best score
-        int finalScore = ScoreManager.Instance.CalculateFinalScore();
-        int savedBest = PlayerPrefs.GetInt(levelKey + "_BestScore", 0);
+        int savedScore = PlayerPrefs.GetInt(levelName + "_BestScore", 0);
+        if (finalScore > savedScore)
+            PlayerPrefs.SetInt(levelName + "_BestScore", finalScore);
 
-        if (finalScore > savedBest)
-        {
-            PlayerPrefs.SetInt(levelKey + "_BestScore", finalScore);
-            Debug.Log("New best score: " + finalScore);
-        }
-
-        // Save best stars
-        int stars = ScoreManager.Instance.GetStarRating();
-        int savedStars = PlayerPrefs.GetInt(levelKey + "_Stars", 0);
-
+        // Save stars
+        int savedStars = PlayerPrefs.GetInt(levelName + "_Stars", 0);
         if (stars > savedStars)
-            PlayerPrefs.SetInt(levelKey + "_Stars", stars);
+            PlayerPrefs.SetInt(levelName + "_Stars", stars);
+
+        // Mark level as played ← NEW
+        PlayerPrefs.SetInt(levelName + "_Played", 1);
 
         // Unlock next level
         if (!string.IsNullOrEmpty(currentLevelData.nextLevelScene))
-        {
             PlayerPrefs.SetInt(currentLevelData.nextLevelScene + "_Unlocked", 1);
-            Debug.Log("Unlocked: " + currentLevelData.nextLevelScene);
-        }
 
         PlayerPrefs.Save();
     }

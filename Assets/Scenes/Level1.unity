@@ -2677,7 +2677,7 @@ MonoBehaviour:
   doorOpenDistance: 0.75
   doorOpenSpeed: 0.3
   currentLevelData: {fileID: 11400000, guid: a7b3273eeb318da4c91a99db2ce10778, type: 2}
-  levelCompleteDelay: 2
+  levelCompleteDelay: 0.5
 --- !u!1001 &373796829
 PrefabInstance:
   m_ObjectHideFlags: 0

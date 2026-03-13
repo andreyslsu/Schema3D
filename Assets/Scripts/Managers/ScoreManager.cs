@@ -49,6 +49,10 @@ public class ScoreManager : MonoBehaviour
         lastFragmentTime = 0f;
         isTracking = true;
 
+        // Force refresh UI immediately
+        if (ScoreUI.Instance != null)
+            ScoreUI.Instance.ForceRefresh();
+
         Debug.Log("Score tracking started!");
     }
 

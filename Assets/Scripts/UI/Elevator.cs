@@ -1,9 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-// Attach this to your elevator object
-// Opens doors when keycard accepted
-// Triggers level complete when player enters
 public class Elevator : MonoBehaviour
 {
     [Header("Elevator Doors")]
@@ -14,7 +11,11 @@ public class Elevator : MonoBehaviour
 
     [Header("Level Complete")]
     public LevelData currentLevelData;
-    public float levelCompleteDelay = 2f;
+    public float levelCompleteDelay = 0.5f;
+
+    [Header("Entrance Settings")]
+    public bool isEntranceElevator = false;  // True = opens on spawn 
+    public float entranceOpenDelay = 2f;     // Dramatic delay 
 
     // Door positions
     private Vector3 leftDoorClosedPos;
@@ -26,7 +27,7 @@ public class Elevator : MonoBehaviour
 
     private void Start()
     {
-        // Store closed positions
+        // Store door positions
         if (leftDoor != null)
         {
             leftDoorClosedPos = leftDoor.localPosition;
@@ -38,6 +39,40 @@ public class Elevator : MonoBehaviour
             rightDoorClosedPos = rightDoor.localPosition;
             rightDoorOpenPos = rightDoorClosedPos + Vector3.right * doorOpenDistance;
         }
+
+        // Entrance elevator opens automatically after delay
+        // Exit elevator stays closed until keycard used
+        if (isEntranceElevator)
+            StartCoroutine(EntranceOpen());
+        else
+            CloseDoors(); // Exit elevator starts closed 
+    }
+
+    // Dramatic entrance open after delay
+    private IEnumerator EntranceOpen()
+    {
+        // Doors closed at first
+        CloseDoors();
+
+        // Wait for dramatic effect
+        yield return new WaitForSeconds(entranceOpenDelay);
+
+        // Then open
+        OpenElevator();
+
+        Debug.Log("Entrance elevator opened!");
+    }
+
+    // Closes doors instantly
+    private void CloseDoors()
+    {
+        if (leftDoor != null)
+            leftDoor.localPosition = leftDoorClosedPos;
+
+        if (rightDoor != null)
+            rightDoor.localPosition = rightDoorClosedPos;
+
+        isOpen = false;
     }
 
     // Called by ElevatorPanel when keycard accepted
@@ -70,27 +105,19 @@ public class Elevator : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Elevator doors open!");
+        Debug.Log("Doors fully open!");
     }
 
     // Triggered when player walks into elevator
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Something entered trigger: " + other.name);
+        if (!other.CompareTag("Player")) return;
+        if (!isOpen) return;
 
-        if (!other.CompareTag("Player"))
-        {
-            Debug.Log("Not player, ignoring");
-            return;
-        }
+        // Only exit elevator triggers level complete
+        if (isEntranceElevator) return;
 
-        if (!isOpen)
-        {
-            Debug.Log("Elevator not open yet!");
-            return;
-        }
-
-        Debug.Log("Player entered elevator!");
+        Debug.Log("Player entered exit elevator!");
         StartCoroutine(TriggerLevelComplete());
     }
 

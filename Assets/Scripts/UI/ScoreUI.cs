@@ -28,16 +28,20 @@ public class ScoreUI : MonoBehaviour
 
     private void Update()
     {
-        // Only update if ScoreManager is tracking
         if (ScoreManager.Instance == null) return;
-        if (!ScoreManager.Instance.IsTracking()) return;
 
-        // Update UI at set rate to avoid performance issues
+        // Always update timer regardless of tracking
         updateTimer += Time.deltaTime;
         if (updateTimer >= updateRate)
         {
             updateTimer = 0f;
-            RefreshUI();
+
+            // Only refresh if tracking
+            if (ScoreManager.Instance.IsTracking())
+                RefreshUI();
+            else
+                // Show base score when not tracking yet
+                ShowBaseScore();
         }
     }
 
@@ -93,4 +97,29 @@ public class ScoreUI : MonoBehaviour
     {
         RefreshUI();
     }
+
+    private void ShowBaseScore()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + ScoreManager.Instance.baseScore;
+            scoreText.color = Color.green;
+        }
+
+        if (timerText != null)
+            timerText.text = "Time: 00:00";
+
+        if (errorsText != null)
+        {
+            errorsText.text = "Errors: 0";
+            errorsText.color = Color.white;
+        }
+
+        if (bonusText != null)
+        {
+            bonusText.text = "Bonus: +0";
+            bonusText.color = Color.yellow;
+        }
+    }
+
 }
