@@ -35,8 +35,8 @@ public class LevelCompleteUI : MonoBehaviour
     public float resultDelay = 0.3f;         // Delay between each result appearing
 
     [Header("Star Settings")]
-    public Color starActiveColor = Color.yellow;
-    public Color starInactiveColor = Color.grey;
+    public Sprite starFilledSprite;  
+    public Sprite starEmptySprite;    
 
     private LevelData currentLevelData;
 
@@ -62,6 +62,9 @@ public class LevelCompleteUI : MonoBehaviour
         // Hide ALL results immediately at start
         // So nothing shows before animation plays
         SetAllResultsVisible(false);
+        SetStarActive(star1, false);
+        SetStarActive(star2, false);
+        SetStarActive(star3, false);
 
         if (nextLevelButton != null)
             nextLevelButton.onClick.AddListener(LoadNextLevel);
@@ -320,7 +323,11 @@ public class LevelCompleteUI : MonoBehaviour
         if (star == null) return;
         Image img = star.GetComponent<Image>();
         if (img != null)
-            img.color = earned ? starActiveColor : starInactiveColor;
+        {
+            // Swap sprite based on earned
+            img.sprite = earned ? starFilledSprite : starEmptySprite;
+            img.color = Color.white; // keep white so PNG shows true color ✓
+        }
     }
 
     // Sets star active state
