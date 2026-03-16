@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: e7404dc39e0e2dc4496c14dfbb19ec36
+guid: 6f0a1d6942357b444ab881b8f7f6d557
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.216
-    second: {fileID: 2100000, guid: ef6826bb3daf589458959e980d5559e7, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -75,15 +70,15 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -114,8 +109,8 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 306976
-  packageName: Bar / Interior - Functional Low Poly assets
+  productId: 311111
+  packageName: Bedrooms & Bathroom / Interior - Low Poly assets
   packageVersion: 1.0
   assetPath: Assets/Fries and Seagull/Bar 02/Models/Cup.fbx
-  uploadId: 721453
+  uploadId: 734940

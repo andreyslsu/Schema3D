@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f98b0147f4c6b31448735586b2060909
+guid: de8366e40926e474581f6c826991ba73
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -70,15 +70,15 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -109,8 +109,8 @@ ModelImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 306976
-  packageName: Bar / Interior - Functional Low Poly assets
+  productId: 311111
+  packageName: Bedrooms & Bathroom / Interior - Low Poly assets
   packageVersion: 1.0
   assetPath: Assets/Fries and Seagull/Bar 02/Models/Picture Frame 1.fbx
-  uploadId: 721453
+  uploadId: 734940

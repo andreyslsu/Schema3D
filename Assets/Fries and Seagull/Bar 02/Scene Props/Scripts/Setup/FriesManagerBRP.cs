@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 # if UNITY_EDITOR
-using Seagull.City_03.Inspector;
+
 using UnityEditor;
 # endif
 using UnityEngine;
@@ -23,7 +23,7 @@ namespace Seagull.City_03.SceneProps.Setup {
         public int postProcessLayer = -1;
         
 # if UNITY_EDITOR
-        [AButton("Initialize")] [IgnoreInInspector]
+        
         public Action initialize;
 
         private void Reset() {
@@ -101,9 +101,9 @@ namespace Seagull.City_03.SceneProps.Setup {
         }
 # endif
     }
-    
-    #if UNITY_EDITOR
+
+#if UNITY_EDITOR
     [CustomEditor(typeof(FriesManagerBRP))]
-    public class FriesInitializerInspector : AnInspector { }
+    public class FriesInitializerInspector { }
     #endif
 }

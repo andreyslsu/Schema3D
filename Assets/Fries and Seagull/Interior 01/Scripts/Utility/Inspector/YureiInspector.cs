@@ -1,14 +1,15 @@
 ﻿#if UNITY_EDITOR
 
+using Seagull.City_03.SceneProps.Setup;
 using System;
 using System.Reflection;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Seagull.Interior_01.Utility.Inspector {
-    
+namespace Seagull.Interior_01.Utility.Inspector
+{
+
     [CustomEditor(typeof(Audio))]
     public class YureiInspector : Editor {
         
