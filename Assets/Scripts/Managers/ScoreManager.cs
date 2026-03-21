@@ -6,21 +6,24 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     [Header("Score Settings")]
-    public int baseScore = 1000;              // Starting score per level
-    public int errorPenalty = 10;             // Points lost per wrong answer
-    public float timePenaltyRate = 1f;        // Points lost per second
-    public int fragmentSpeedBonus = 50;       // Bonus per fragment collected quickly
+    public int baseScore = 500;              // Starting score per level
+    public int errorPenalty = 25;             // Points lost per wrong answer
+    public float timePenaltyRate = 2f;        // Points lost per second
+    public int fragmentSpeedBonus = 30;       // Bonus per fragment collected quickly
 
     [Header("Speed Bonus Settings")]
     public float speedBonusTimeLimit = 10f;   // Seconds to collect fragment for bonus
                                               // e.g collect within 10s = bonus
-
     // Private tracking variables
     private int errorCount = 0;               // Total wrong answers submitted
     private float timeElapsed = 0f;           // Total time elapsed
     private bool isTracking = false;          // Whether timer is running
     private int bonusPoints = 0;              // Total bonus points earned
     private float lastFragmentTime = 0f;      // Time when last fragment collected
+
+    [Header("Game Over Settings")]
+    public float maxTime = 180f;         // 3 minutes 
+    public bool enableGameOver = true;
 
     private void Awake()
     {
@@ -31,9 +34,26 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        // Only count time during active gameplay
-        if (isTracking)
-            timeElapsed += Time.deltaTime;
+        if (!isTracking) return;
+
+        timeElapsed += Time.deltaTime;
+
+        // Check if time ran out
+        if (enableGameOver && timeElapsed >= maxTime)
+        {
+            timeElapsed = maxTime;
+            isTracking = false;
+            TriggerGameOver();
+            return;
+        }
+
+        // Check if score hit 0
+        if (enableGameOver && CalculateFinalScore() <= 0)
+        {
+            isTracking = false;
+            TriggerGameOver();
+            return;
+        }
     }
 
     // =========================================
@@ -54,6 +74,17 @@ public class ScoreManager : MonoBehaviour
             ScoreUI.Instance.ForceRefresh();
 
         Debug.Log("Score tracking started!");
+    }
+
+    private void TriggerGameOver()
+    {
+        Debug.Log("naubos oras");
+
+        if (GameOverUI.Instance != null)
+            GameOverUI.Instance.ShowGameOver(
+                "Your base score ran out!");
+        else
+            Debug.LogWarning("GameOverUI not found!");
     }
 
     // Call this when level ends
@@ -120,13 +151,10 @@ public class ScoreManager : MonoBehaviour
     {
         int score = CalculateFinalScore();
 
-        // 3 stars = 80% or above of base score
-        // 2 stars = 50% or above
-        // 1 star  = any score above 0
-        if (score >= baseScore * 0.8f) return 3; // 3 stars
-        else if (score >= baseScore * 0.5f) return 2; // 2 stars
-        else if (score > 0) return 1; // 1 star
-        else return 0; // 0 stars
+        if (score >= baseScore * 0.7f) return 3;  // 350+ 
+        else if (score >= baseScore * 0.5f) return 2; // 250+ 
+        else if (score > 0) return 1;              // any 
+        else return 0;                             // game over 
     }
 
     public void ResumeTracking()

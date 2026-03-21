@@ -48,28 +48,38 @@ public class ScoreUI : MonoBehaviour
     // Refreshes all score UI elements
     private void RefreshUI()
     {
-        // Update current score
+        if (ScoreManager.Instance == null) return;
+
+        // Update score
+        int score = ScoreManager.Instance.CalculateFinalScore();
         if (scoreText != null)
         {
-            int currentScore = ScoreManager.Instance.CalculateFinalScore();
-            scoreText.text = "Score: " + currentScore;
-
-            // Change color based on score range
-            if (currentScore >= 800)
-                scoreText.color = Color.green;       // Great score
-            else if (currentScore >= 500)
-                scoreText.color = Color.yellow;      // Ok score
-            else
-                scoreText.color = Color.red;         // Low score
+            scoreText.text = "Score: " + score;
+            if (score >= 350) scoreText.color = Color.green;
+            else if (score >= 250) scoreText.color = Color.yellow;
+            else scoreText.color = Color.red;
         }
 
-        // Update timer
+        // Update timer with warning color
+        float time = ScoreManager.Instance.GetTime();
+        float maxTime = ScoreManager.Instance.maxTime;
+        float timeLeft = maxTime - time;
+
+        int minutes = Mathf.FloorToInt(timeLeft / 60);
+        int seconds = Mathf.FloorToInt(timeLeft % 60);
+
         if (timerText != null)
         {
-            float time = ScoreManager.Instance.GetTime();
-            int minutes = Mathf.FloorToInt(time / 60);
-            int seconds = Mathf.FloorToInt(time % 60);
-            timerText.text = string.Format("Time: {0:00}:{1:00}", minutes, seconds);
+            timerText.text = "Time: " +
+                string.Format("{0:00}:{1:00}", minutes, seconds);
+
+            // Warning colors
+            if (timeLeft <= 10f)
+                timerText.color = Color.red;      // urgent 
+            else if (timeLeft <= 30f)
+                timerText.color = Color.yellow;   // warning 
+            else
+                timerText.color = Color.white;    // normal 
         }
 
         // Update errors
@@ -77,8 +87,6 @@ public class ScoreUI : MonoBehaviour
         {
             int errors = ScoreManager.Instance.GetErrors();
             errorsText.text = "Errors: " + errors;
-
-            // Turn red if player has made errors
             errorsText.color = errors > 0 ? Color.red : Color.white;
         }
 
