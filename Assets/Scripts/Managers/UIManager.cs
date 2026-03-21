@@ -256,6 +256,22 @@ public class UIManager : MonoBehaviour
         isPaused = false;
     }
 
+    private void ResetState()
+    {
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowGameplayUI();
+    }
+    public void RetryLevel()
+    {
+        ResetState();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void SetVolume(float value)
     {
         if (SettingsManager.Instance != null)
@@ -277,6 +293,9 @@ public class UIManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with your scene name
+        Time.timeScale = 1f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("MainMenu");
     }
 }
