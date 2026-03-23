@@ -31,6 +31,11 @@ public class Keycard : MonoBehaviour
         }
         else
             Debug.LogWarning("UIManager not found!");
+
+        LevelDialogue levelDialogue =
+        FindFirstObjectByType<LevelDialogue>();
+        if (levelDialogue != null)
+            levelDialogue.ShowKeycardHint();
     }
 
     // Returns whether player has keycard

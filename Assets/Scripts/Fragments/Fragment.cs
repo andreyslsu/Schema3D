@@ -26,6 +26,13 @@ public class Fragment : Interactable
         else
             Debug.LogWarning("ScoreManager not found!");
 
+        LevelDialogue levelDialogue =
+        FindFirstObjectByType<LevelDialogue>();
+        if (levelDialogue != null)
+            levelDialogue.ShowFirstFragmentHint();
+
+        gameObject.SetActive(false);
+
         // Hide fragment from scene
         gameObject.SetActive(false);
     }

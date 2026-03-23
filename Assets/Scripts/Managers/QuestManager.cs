@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 
@@ -109,21 +109,25 @@ public class QuestManager : MonoBehaviour
     {
         quest1Complete = true;
 
-        // Turn count text green to show completion
+        // Turn count text green
         if (quest1CountText != null)
         {
             quest1CountText.text = fragmentsRequired + "/" + fragmentsRequired;
             quest1CountText.color = Color.green;
         }
 
-        // Show quest 2 panel now that quest 1 is done
+        // Show quest 2 panel
         if (quest2Panel != null)
             quest2Panel.SetActive(true);
 
-        // Auto open quest panel so player sees quest 2
+        // Auto open quest panel ✓
         ShowQuestPanel();
 
-        Debug.Log("Quest 1 complete! Quest 2 unlocked!");
+        // Show laptop hint when all fragments found ✓
+        LevelDialogue levelDialogue =
+            FindFirstObjectByType<LevelDialogue>();
+        if (levelDialogue != null)
+            levelDialogue.ShowLaptopHint();
     }
 
     // =========================================

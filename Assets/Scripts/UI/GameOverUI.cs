@@ -82,6 +82,11 @@ public class GameOverUI : MonoBehaviour
 
     public void ShowGameOver(string reason)
     {
+        LevelDialogue levelDialogue =
+        FindFirstObjectByType<LevelDialogue>();
+        if (levelDialogue != null)
+            levelDialogue.ShowGameOverHint();
+
         // Stop score tracking
         if (ScoreManager.Instance != null)
             ScoreManager.Instance.StopTracking();
