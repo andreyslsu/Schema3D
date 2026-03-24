@@ -26,4 +26,6 @@ MonoBehaviour:
     wew
 
     wew'
+  - create table slsu (school_id int, name varchar(50), salary decimal)
+  - create table SLSU (school_id INT, name VARCHAR(50), salary DECIMAL)
   fragmentsRequired: 3

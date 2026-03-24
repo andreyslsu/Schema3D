@@ -9,10 +9,10 @@ public class ScoreManager : MonoBehaviour
     public int baseScore = 500;              // Starting score per level
     public int errorPenalty = 25;             // Points lost per wrong answer
     public float timePenaltyRate = 2f;        // Points lost per second
-    public int fragmentSpeedBonus = 30;       // Bonus per fragment collected quickly
+    public int fragmentSpeedBonus = 50;       // Bonus per fragment collected quickly
 
     [Header("Speed Bonus Settings")]
-    public float speedBonusTimeLimit = 10f;   // Seconds to collect fragment for bonus
+    public float speedBonusTimeLimit = 30f;   // Seconds to collect fragment for bonus
                                               // e.g collect within 10s = bonus
     // Private tracking variables
     private int errorCount = 0;               // Total wrong answers submitted
@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
     private float lastFragmentTime = 0f;      // Time when last fragment collected
 
     [Header("Game Over Settings")]
-    public float maxTime = 180f;         // 3 minutes 
+    public float maxTime = 500f;         // 3 minutes 
     public bool enableGameOver = true;
 
     private void Awake()

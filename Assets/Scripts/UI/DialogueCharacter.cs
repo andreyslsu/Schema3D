@@ -123,8 +123,8 @@ public class DialogueCharacter : MonoBehaviour
 
     // Show list of lines
     public void ShowDialogue(
-        List<DialogueLine> lines,
-        System.Action onComplete = null)
+     List<DialogueLine> lines,
+     System.Action onComplete = null)
     {
         StopAllCoroutines();
         dialogueQueue.Clear();
@@ -137,6 +137,10 @@ public class DialogueCharacter : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        // Hide hotbar during dialogue ✓
+        if (UIManager.Instance != null)
+            UIManager.Instance.HideGameplayUI();
 
         dialoguePanel.SetActive(true);
         isShowing = true;
@@ -216,6 +220,10 @@ public class DialogueCharacter : MonoBehaviour
 
         if (tapToContinueText != null)
             tapToContinueText.SetActive(false);
+
+        // Show hotbar again after dialogue ✓
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowGameplayUI();
 
         onDialogueComplete?.Invoke();
         onDialogueComplete = null;
