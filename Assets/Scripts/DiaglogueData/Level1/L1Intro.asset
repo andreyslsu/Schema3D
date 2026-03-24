@@ -22,7 +22,7 @@ MonoBehaviour:
   - text: '"Youra mission is to find all the DATA FRAGMENTS hidden in this room."
       hihi'
     mood: 0
-  - text: "\"CONTROLS:\n Move \u2192 Left Joystick \nLook \u2192 Right Joystick\nInteract
+  - text: "\"CONTROLS:\nMove \u2192 Left Joystick \nLook \u2192 Right Joystick\nInteract
       \u2192 Tap the screen\""
     mood: 3
   - text: '"Collect all fragments, solve the terminal puzzle, get the keycard and
