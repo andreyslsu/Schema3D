@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
@@ -38,10 +38,6 @@ public class DialogueCharacter : MonoBehaviour
     private string currentFullText = "";
     private Coroutine typingCoroutine;
     private System.Action onDialogueComplete;
-
-    // =========================================
-    // DIALOGUE DATA
-    // =========================================
 
     [System.Serializable]
     public class DialogueLine
@@ -93,6 +89,26 @@ public class DialogueCharacter : MonoBehaviour
     // PUBLIC SHOW DIALOGUE
     // =========================================
 
+    // Show from DialogueData asset ✓
+    // This is the main one you will use
+    public void ShowDialogue(
+        DialogueData data,
+        System.Action onComplete = null)
+    {
+        if (data == null)
+        {
+            Debug.LogWarning("DialogueData is NULL!");
+            return;
+        }
+
+        var lines = new List<DialogueLine>();
+
+        foreach (DialogueData.Line line in data.lines)
+            lines.Add(new DialogueLine(line.text, line.mood));
+
+        ShowDialogue(lines, onComplete);
+    }
+
     // Show single line
     public void ShowDialogue(
         string text,
@@ -105,7 +121,7 @@ public class DialogueCharacter : MonoBehaviour
         }, onComplete);
     }
 
-    // Show multiple lines
+    // Show list of lines
     public void ShowDialogue(
         List<DialogueLine> lines,
         System.Action onComplete = null)
@@ -118,7 +134,6 @@ public class DialogueCharacter : MonoBehaviour
 
         onDialogueComplete = onComplete;
 
-        // Pause game
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -177,7 +192,6 @@ public class DialogueCharacter : MonoBehaviour
 
         if (isTyping)
         {
-            // Skip to full text
             StopCoroutine(typingCoroutine);
             isTyping = false;
             dialogueText.text = currentFullText;
