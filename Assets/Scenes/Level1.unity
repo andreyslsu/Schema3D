@@ -4224,7 +4224,7 @@ MonoBehaviour:
   timePenaltyRate: 2
   fragmentSpeedBonus: 30
   speedBonusTimeLimit: 10
-  maxTime: 500
+  maxTime: 300
   enableGameOver: 1
 --- !u!4 &193957121
 Transform:

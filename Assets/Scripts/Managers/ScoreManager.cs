@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
     private float lastFragmentTime = 0f;      // Time when last fragment collected
 
     [Header("Game Over Settings")]
-    public float maxTime = 500f;         // 3 minutes 
+    public float maxTime = 300f;         
     public bool enableGameOver = true;
 
     private void Awake()

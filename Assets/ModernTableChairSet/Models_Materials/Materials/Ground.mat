@@ -21,13 +21,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ground
-  m_Shader: {fileID: -6465566751694194690, guid: 9920c1f1781549a46ba081a2a15a16ec, type: 3}
+  m_Shader: {fileID: 14002, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - BACKFACE_NORMAL_MODE_MIRROR
   - _WINDQUALITY_NONE
   m_InvalidKeywords:
+  - BACKFACE_NORMAL_MODE_MIRROR
   - _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
