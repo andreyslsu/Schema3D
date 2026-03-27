@@ -54,6 +54,9 @@ public class FillBlankInteractable : Interactable
         if (solvedIndicator != null)
             solvedIndicator.SetActive(true);
 
+        if (QuestManager.Instance != null)
+            QuestManager.Instance.OnMinigameCompleted();
+
         Debug.Log("Puzzle solved!");
     }
 }

@@ -32,8 +32,5 @@ public class Fragment : Interactable
             levelDialogue.ShowFirstFragmentHint();
 
         gameObject.SetActive(false);
-
-        // Hide fragment from scene
-        gameObject.SetActive(false);
     }
 }

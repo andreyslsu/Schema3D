@@ -8,7 +8,6 @@ public class LevelData : ScriptableObject
     [Header("Level Info")]
     public string levelName;                 // e.g "Level 1"
     public string nextLevelScene;            // Scene name of next level
-    public Sprite resultImage;               // Image shown on level complete
 
     [Header("Laptop Puzzle")]
     [TextArea(5, 15)]

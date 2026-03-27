@@ -66,8 +66,8 @@ public class DialogueCharacter : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        //if (Instance == null) Instance = this;
+       // else Destroy(gameObject);
     }
 
     private void Start()
@@ -89,8 +89,6 @@ public class DialogueCharacter : MonoBehaviour
     // PUBLIC SHOW DIALOGUE
     // =========================================
 
-    // Show from DialogueData asset ✓
-    // This is the main one you will use
     public void ShowDialogue(
         DialogueData data,
         System.Action onComplete = null)
@@ -138,7 +136,7 @@ public class DialogueCharacter : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        // Hide hotbar during dialogue ✓
+        // Hide hotbar during dialogue 
         if (UIManager.Instance != null)
             UIManager.Instance.HideGameplayUI();
 
@@ -221,7 +219,7 @@ public class DialogueCharacter : MonoBehaviour
         if (tapToContinueText != null)
             tapToContinueText.SetActive(false);
 
-        // Show hotbar again after dialogue ✓
+        // Show hotbar again after dialogue 
         if (UIManager.Instance != null)
             UIManager.Instance.ShowGameplayUI();
 

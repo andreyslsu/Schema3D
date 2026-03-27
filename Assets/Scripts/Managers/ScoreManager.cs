@@ -160,7 +160,6 @@ public class ScoreManager : MonoBehaviour
     public void ResumeTracking()
     {
         isTracking = true;
-        Debug.Log("Score tracking resumed!");
     }
 
     // =========================================

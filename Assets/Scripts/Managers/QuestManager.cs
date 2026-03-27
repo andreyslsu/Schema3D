@@ -15,14 +15,20 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI quest1CountText;     // Shows "0/3" count
     public int fragmentsRequired;               // Set per level in Inspector
 
-    [Header("Quest 2 - Use Laptop")]
-    public GameObject quest2Panel;              // Panel for laptop quest
-                                                // Hidden until quest 1 complete
+    [Header("Quest 2 - Mini Games")]
+    public GameObject quest2Panel;
+    public TextMeshProUGUI quest2CountText;
+    public int minigamesRequired = 1;
+    private int minigamesCompleted = 0;
+
+    [Header("Quest 3 - Use Laptop")]
+    public GameObject quest3Panel;              // Panel for laptop quest
 
     // Private tracking variables
     private int fragmentsCollected = 0;          // Current fragment count
     private bool quest1Complete = false;         // True when all fragments collected
-    private bool quest2Complete = false;         // True when laptop answer correct
+    private bool quest2Complete = false;         
+    private bool quest3Complete = false;         
 
     private void Awake()
     {
@@ -40,6 +46,9 @@ public class QuestManager : MonoBehaviour
         // Quest 2 panel hidden until quest 1 complete
         if (quest2Panel != null)
             quest2Panel.SetActive(false);
+
+        if (quest3Panel != null)
+            quest3Panel.SetActive(false);
 
         // Set initial count
         UpdateQuest1UI();
@@ -62,8 +71,6 @@ public class QuestManager : MonoBehaviour
     public void CloseQuestPanel()
     {
         questPanel.SetActive(false);
-        // Score tracking is handled by IntroQuestPanel
-        // Do not touch ScoreManager here to avoid resets
     }
 
     // =========================================
@@ -89,7 +96,6 @@ public class QuestManager : MonoBehaviour
         Debug.Log("Fragment collected: " + fragmentsCollected + "/" + fragmentsRequired);
     }
 
-    // Updates the count text e.g "0/3" "1/3" "2/3" "3/3"
     private void UpdateQuest1UI()
     {
         if (quest1CountText == null)
@@ -98,8 +104,6 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
-        // Update count text only
-        // Label design is handled freely in Unity Inspector
         quest1CountText.text = fragmentsCollected + "/" + fragmentsRequired;
         quest1CountText.color = Color.white;
     }
@@ -120,10 +124,34 @@ public class QuestManager : MonoBehaviour
         if (quest2Panel != null)
             quest2Panel.SetActive(true);
 
-        // Auto open quest panel ✓
+        ShowQuestPanel();
+    }
+    // quest 2 mini games
+    public void OnMinigameCompleted()
+    {
+        if (quest2Complete) return;
+
+        minigamesCompleted++;
+
+        if (quest2CountText != null)
+            quest2CountText.text =
+                minigamesCompleted + "/" + minigamesRequired;
+
+        if (minigamesCompleted >= minigamesRequired)
+        {
+            quest2Complete = true;
+
+            if (quest2CountText != null)
+                quest2CountText.color = Color.green;
+        }
+
+        // Show quest 2 panel
+        if (quest3Panel != null)
+            quest3Panel.SetActive(true);
+
         ShowQuestPanel();
 
-        // Show laptop hint when all fragments found ✓
+        // Show laptop hint when all fragments found 
         LevelDialogue levelDialogue =
             FindFirstObjectByType<LevelDialogue>();
         if (levelDialogue != null)
@@ -131,22 +159,21 @@ public class QuestManager : MonoBehaviour
     }
 
     // =========================================
-    // QUEST 2 - USE LAPTOP
+    // QUEST 3 - USE LAPTOP
     // =========================================
-
-    // Called by LaptopManager when correct answer submitted
     public void OnLaptopQuestComplete()
     {
-        quest2Complete = true;
+        quest3Complete = true;
 
-        Debug.Log("Quest 2 complete! Level done!");
+        Debug.Log("Quest 3 complete! Level done!");
     }
+
 
     // =========================================
     // GETTERS
     // =========================================
 
-    // Returns whether quest 1 is complete
+    // pang return sa quests
     public bool IsQuest1Complete()
     {
         return quest1Complete;

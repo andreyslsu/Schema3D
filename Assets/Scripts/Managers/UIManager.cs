@@ -18,7 +18,6 @@ public class UIManager : MonoBehaviour
     [Header("Keycard UI")]
     public GameObject keycardPanel;          // Panel showing keycard info
     public TextMeshProUGUI keycardText;      // Text inside keycard panel
-    public GameObject keycardHotbarSlot;
 
     public Transform hotbarContainer;        // HotbarPanel transform
     public GameObject hotbarSlotPrefab;      // Fragment slot prefab

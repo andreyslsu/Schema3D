@@ -16,6 +16,9 @@ public class ElevatorPanel : Interactable
     public Color lockedColor = Color.red;
     public Color unlockedColor = Color.green;
 
+    [Header("Elevator Type")]
+    public bool isEntrancePanel = false;
+
     [Header("Messages")]
     public string noKeycardMessage = "Access Denied!";
     public string accessGrantedMessage = "Access Granted!";
@@ -48,6 +51,14 @@ public class ElevatorPanel : Interactable
 
     public override void Interact()
     {
+        if (isEntrancePanel)
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowInteractLabel(
+                    "This is the entrance!");
+            return;
+        }
+
         if (Keycard.Instance == null)
         {
             Debug.LogWarning("Keycard Instance not found!");
@@ -107,7 +118,7 @@ public class ElevatorPanel : Interactable
         if (UIManager.Instance != null)
             UIManager.Instance.ShowInteractLabel(message);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
 
         // Reset world space label
         if (labelText != null)

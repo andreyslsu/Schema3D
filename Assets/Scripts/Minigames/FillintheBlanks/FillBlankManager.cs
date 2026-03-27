@@ -59,7 +59,6 @@ public class FillBlankManager : MonoBehaviour
         System.Action onSolved = null)
     {
         if (data == null) return;
-        if (isSolved) return;
 
         currentData = data;
         onSolvedCallback = onSolved;
