@@ -6,7 +6,7 @@ public class FillBlankData : ScriptableObject
 {
     [Header("Question")]
     [TextArea(2, 4)]
-    public string questionText;        // SQL with blank
+    public string questionText; // SQL with blank
     public string blankPlaceholder = "_";  // what blank looks like
 
     [Header("Choices")]

@@ -17,5 +17,8 @@ MonoBehaviour:
     mood: 2
   - text: '"Now find the TERMINAL and reconstruct the SQL query using your clues!"'
     mood: 0
-  - text: '"Remember SQL is not case sensitive but watch your spacing!"'
+  - text: "\"Remember the order:\n 1. CREATE DATABASE\n 2. CREATE TABLE\n 3. Add
+      all columns!\""
     mood: 3
+  - text: "\"You have all the fragments.\n I believe in you!\""
+    mood: 1

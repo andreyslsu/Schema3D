@@ -14,26 +14,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelName: Level1
   nextLevelScene: Level2
-  resultImage: {fileID: 0}
   correctAnswers:
   - www
   - WWW
   - '"www"'
-  - 'wew
+  - create database company_db; create table employees (id int, name varchar(50),
+    department varchar(30), salary decimal(10,2));
+  - 'CREATE DATABASE company_db;
 
-    wew
+    CREATE TABLE employees(
 
-    wew
+    id INT,
 
-    wew'
-  - create table slsu (school_id int(100), name varchar(255), salary decimal)
-  - create table SLSU (school_id INT(100), name VARCHAR(255), salary DECIMAL)
-  - "create table SLSU (\n\tschool_id INT(100), \n\tname VARCHAR(255), \n\tsalary
-    DECIMAL)"
-  - "create table SLSU (\n\tschool_id int(100), \n\tname varchar(255), \n\tsalary
-    decimal)"
-  - "create table slsu (\n\tschool_id int(100), \n\tname varchar(255), \n\tsalary
-    decimal)"
-  - "create table slsu (\n\tschool_id INT(100), \n\tname VARCHAR(255), \n\tsalary
-    DECIMAL)"
-  fragmentsRequired: 2
+    name
+    VARCHAR(50),
+
+    department VARCHAR(30),
+
+    salary DECIMAL(10,2)
+
+    );'
+  - create database company_db;create table employees(id int,name varchar(50),department
+    varchar(30),salary decimal(10,2));
+  - CREATE DATABASE company_db; CREATE TABLE employees (id INT, name VARCHAR(50),
+    department VARCHAR(30), salary DECIMAL(10,2));
+  - 'create database company_db;
+
+    create table employees(
+
+    id int,
+
+    name
+    varchar(50),
+
+    department varchar(30),
+
+    salary decimal(10,2)
+
+    );'
+  - CREATE database COMPANY_DB; CREATE table EMPLOYEES (ID int, NAME varchar(50),
+    DEPARTMENT varchar(30), SALARY decimal(10,2));
+  - CREATE   DATABASE   company_db ;   CREATE   TABLE   employees ( id   INT , name  
+    VARCHAR(50) , department   VARCHAR(30) , salary   DECIMAL(10,2) ) ;
+  - create    database company_db;    create table employees ( id int , name varchar(50)
+    , department varchar(30) , salary decimal(10,2) );
+  - create    database company_db;    create table employees ( id int , name varchar(50)
+    , department varchar(30) , salary decimal(10,2) );
+  - CREATE DATABASE company_db;CREATE TABLE employees(id INT,name VARCHAR(50),department
+    VARCHAR(30),salary DECIMAL(10,2));
+  - "create database company_db;\ncreate table employees(\n\tid int,\n\tname varchar(50),\n\tdepartment
+    varchar(30),\n\tsalary decimal(10,2));"
+  - "CREATE DATABASE company_db; \nCREATE TABLE employees (\n\tid INT,\n\tname VARCHAR(50),\n\tdepartment
+    VARCHAR(30), \n\tsalary DECIMAL(10,2));"
+  fragmentsRequired: 4

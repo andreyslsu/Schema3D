@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: kusunogames
-  productName: Schema3D
+  companyName: ratswithwings
+  productName: Schema
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12156863, g: 0.12156863, b: 0.1254902, a: 1}
@@ -167,7 +167,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.kusunogames.Schema3D
+    Android: com.ratswithwings.Schema
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -299,7 +299,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 869399f922b399141970a3e55fbcea63, type: 3}
+      m_Icon: {fileID: 2800000, guid: 7aa66ddc228fafd4b8cd2e65d45706d2, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

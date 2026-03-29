@@ -21,13 +21,17 @@ MonoBehaviour:
   - VARCHAR
   - BOOLEAN
   correctAnswer: DECIMAL
-  rewardFragment: 'Fragment 3 Task
+  rewardFragment: 'Fragment#4 - Salary Column
 
 
-    to add decimal data type use
+    The last column stores
+
+    employee
+    salaries.
+
+    Money needs decimal points!
 
 
-    column_name
-    decimal '
+    salary DECIMAL(10,2) '
   correctFeedback: Correct!
   wrongFeedback: Try again!

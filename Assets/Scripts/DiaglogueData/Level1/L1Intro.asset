@@ -19,14 +19,18 @@ MonoBehaviour:
   - text: '"Someone has tampered with our database records.We need to find out what
       query they used!"'
     mood: 4
-  - text: '"Youra mission is to find all the DATA FRAGMENTS hidden in this room."
-      hihi'
+  - text: "\"We need to find the exact\n SQL they used to create it\n so we can reverse
+      it!\""
+    mood: 4
+  - text: "\"Search this lobby for\n DATA FRAGMENTS containing\n SQL clues! hihihi\""
     mood: 0
+  - text: "\"You will also find a\n DATA TERMINAL with a\n quick SQL puzzle to solve!\""
+    mood: 3
   - text: "\"CONTROLS:\nMove \u2192 Left Joystick \nLook \u2192 Right Joystick\nInteract
       \u2192 Tap the screen\""
     mood: 3
   - text: '"Collect all fragments, solve the terminal puzzle, get the keycard and
       reach the elevator!"'
     mood: 0
-  - text: '"Good luck Detective! The database is counting on you!"'
+  - text: '"Good luck Gamer! The database is counting on you!"'
     mood: 1
