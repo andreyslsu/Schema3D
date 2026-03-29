@@ -12551,7 +12551,7 @@ MonoBehaviour:
   questPanel: {fileID: 1266912207}
   quest1Panel: {fileID: 579461102}
   quest1CountText: {fileID: 978256985}
-  fragmentsRequired: 2
+  fragmentsRequired: 4
   quest2Panel: {fileID: 576643280}
   quest2CountText: {fileID: 1147739814}
   minigamesRequired: 1
@@ -44023,7 +44023,7 @@ MonoBehaviour:
   interactLabel: Fragment
   labelObject: {fileID: 0}
   labelText: {fileID: 0}
-  fragmentClue: "\"CLUE #3 - Data Types\n\nCommon SQL data types:\nINT \u2192 whole
+  fragmentClue: "Fragment#3 - Data Types\n\nCommon SQL data types:\nINT \u2192 whole
     numbers (age, id)\nVARCHAR(n) \u2192 text up to n chars\nDECIMAL \u2192 decimal
     numbers\nDATE \u2192 stores dates\n\nThe columns found were:\nid INT\nname VARCHAR(50)\ndepartment
     VARCHAR(30)"
