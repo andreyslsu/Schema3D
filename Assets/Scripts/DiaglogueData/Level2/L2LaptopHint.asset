@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d54da586334974da6bb6e988273f5d, type: 3}
+  m_Name: L2LaptopHint
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - text: '"Amazing brodigy! You found all the fragments!"'
+    mood: 2
+  - text: '"Now find the TERMINAL and reconstruct the SQL query using your clues!"'
+    mood: 0
+  - text: '"Remember the order:
+
+      1. INSERT INTO
+
+      2. TABLE NAME
+
+      3.
+      COLUMN NAMES
+
+      4. VALUES'
+    mood: 3
+  - text: "\"You have all the fragments.\n I believe in you!\""
+    mood: 1

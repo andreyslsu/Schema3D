@@ -14,9 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelName: Level2
   nextLevelScene: Level3
-  resultImage: {fileID: 0}
   correctAnswers:
   - hello
   - helloo
   - shazam
-  fragmentsRequired: 3
+  - 'insert into students (id, name, age)
+
+    values (1, ''Anna'', 20);'
+  - 'insert into students(id, name, age)
+
+    values (1, ''Anna'', 20);'
+  - 'INSERT INTO STUDENTS(ID, NAME, AGE)
+
+    VALUES (1, ''ANNA'', 20);'
+  - 'INSERT INTO STUDENTS (ID, NAME, AGE)
+
+    VALUES (1, ''ANNA'', 20);'
+  - 'insert into students (id, name, age)
+
+    values (1, ''anna'', 20);'
+  - 'insert into students(id, name, age)
+
+    values (1, ''anna'', 20);'
+  fragmentsRequired: 4

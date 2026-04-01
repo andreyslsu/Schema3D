@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d54da586334974da6bb6e988273f5d, type: 3}
+  m_Name: L2Intro
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - text: 'Welcome back Detective!
+
+
+      Congrats for finishing your first challenge.'
+    mood: 0
+  - text: 'But let''s not celebrate to early.
+
+'
+    mood: 3
+  - text: 'The hacker has moved
+
+      to the office floor
+
+      and inserted fake
+      data!'
+    mood: 4
+  - text: 'Search the office,
+
+      break room and storage
+
+      for all clues!'
+    mood: 0
+  - text: Collect all fragments, solve the terminal puzzle, get the keycard and reach
+      the elevator!
+    mood: 3
+  - text: "REMEMBER CONTROLS:\nMove \u2192 Left Joystick \nLook \u2192 Right Joystick\nInteract
+      \u2192 Tap the screen"
+    mood: 3
+  - text: Good luck Gamer! The database is counting on you!
+    mood: 1

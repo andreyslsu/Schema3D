@@ -55,8 +55,8 @@ public class ScoreUI : MonoBehaviour
         if (scoreText != null)
         {
             scoreText.text = "Score: " + score;
-            if (score >= 350) scoreText.color = Color.green;
-            else if (score >= 250) scoreText.color = Color.yellow;
+            if (score >= 750) scoreText.color = Color.green;
+            else if (score >= 450) scoreText.color = Color.yellow;
             else scoreText.color = Color.red;
         }
 

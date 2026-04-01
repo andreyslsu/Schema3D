@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     [Header("Score Settings")]
-    public int baseScore = 500;              // Starting score per level
+    public int baseScore = 1000;              // Starting score per level
     public int errorPenalty = 25;             // Points lost per wrong answer
     public float timePenaltyRate = 2f;        // Points lost per second
     public int fragmentSpeedBonus = 50;       // Bonus per fragment collected quickly
@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
     private float lastFragmentTime = 0f;      // Time when last fragment collected
 
     [Header("Game Over Settings")]
-    public float maxTime = 300f;         
+    public float maxTime = 480f;         
     public bool enableGameOver = true;
 
     private void Awake()

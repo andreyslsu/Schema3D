@@ -5,7 +5,7 @@ public class LevelDialogue : MonoBehaviour
 {
     [Header("Characters")]
     public DialogueCharacter professor;
-    // Add more characters here as needed ✓
+    // Add more characters here as needed 
     // public DialogueCharacter hacker;
     // public DialogueCharacter guardian;
 
@@ -20,8 +20,8 @@ public class LevelDialogue : MonoBehaviour
     public DialogueData gameOverDialogue;
 
     [Header("Custom Dialogues")]
-    // Add any extra dialogues here ✓
-    // Just drag new DialogueData assets ✓
+    // Add any extra dialogues here 
+    // Just drag new DialogueData assets 
     public List<DialogueData> extraDialogues;
 
     [Header("Auto Trigger")]
