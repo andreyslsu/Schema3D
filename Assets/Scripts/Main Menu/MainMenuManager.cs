@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
+
 
 public class MainMenuManager : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject settingsPanel;
     public GameObject levelSelectPanel;
+    public GameObject leaderboardPanel;
+    public GameObject signinPanel;
 
     [Header("Settings Sliders")]
     public Slider volumeSlider;
@@ -155,7 +157,6 @@ public class MainMenuManager : MonoBehaviour
             button.onClick.AddListener(() => LoadLevel(sceneName));
     }
 
-    // Sets star sprite based on earned
     private void SetLevelSelectStar(Image star, bool earned)
     {
         if (star == null) return;
@@ -193,6 +194,7 @@ public class MainMenuManager : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
+
     // =========================================
     // SETTINGS SLIDERS
     // =========================================
@@ -211,6 +213,32 @@ public class MainMenuManager : MonoBehaviour
             SettingsManager.Instance.SetSensitivity(value);
         else
             Debug.LogWarning("SettingsManager not found!");
+    }
+
+    // =========================================
+    // LEADERBOARD
+    // =========================================
+    public void OpenLeaderboard()
+    {
+        leaderboardPanel.SetActive(true);
+    }
+
+    public void CloseLeaderboard()
+    {
+        leaderboardPanel.SetActive(false);
+    }
+
+    // =========================================
+    // signin
+    // =========================================
+    public void OpenSignin()
+    {
+        signinPanel.SetActive(true);
+    }
+
+    public void CloseSignin()
+    {
+        signinPanel.SetActive(false);
     }
 
     // =========================================
