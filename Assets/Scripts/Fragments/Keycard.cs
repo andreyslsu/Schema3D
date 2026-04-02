@@ -1,7 +1,5 @@
 using UnityEngine;
 
-// Tracks whether player has keycard
-// Stored in hotbar just like fragments
 public class Keycard : MonoBehaviour
 {
     public static Keycard Instance;

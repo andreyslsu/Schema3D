@@ -12,26 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa15c26f164cac4784d88afaca94aa9, type: 3}
   m_Name: Level1Fill
   m_EditorClassIdentifier: Assembly-CSharp::FillBlankData
-  questionText: "\"Which data type stores exact fixed point values (e.g \n financial
-    values) like salary?\""
+  questionText: _ stores strings of text, number or symbols.
   blankPlaceholder: _
   choices:
   - DECIMAL
   - INT
   - VARCHAR
   - BOOLEAN
-  correctAnswer: DECIMAL
-  rewardFragment: 'Fragment#4 - Salary Column
+  correctAnswer: VARCHAR
+  rewardFragment: 'Fragment 4 - Column
 
 
-    The last column stores
-
-    employee
-    salaries.
-
-    Money needs decimal points!
+    The last column stores employee department
 
 
-    salary DECIMAL(10,2) '
+    department
+    varchar(30) '
   correctFeedback: Correct!
   wrongFeedback: Try again!

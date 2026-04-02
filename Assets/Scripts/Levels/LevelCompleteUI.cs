@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-// Shows level complete screen with score breakdown
 public class LevelCompleteUI : MonoBehaviour
 {
     public static LevelCompleteUI Instance;
@@ -21,9 +20,9 @@ public class LevelCompleteUI : MonoBehaviour
     public TextMeshProUGUI levelNameText;    // Shows level name
 
     [Header("Star Rating")]
-    public GameObject star1;                 // First star
-    public GameObject star2;                 // Second star
-    public GameObject star3;                 // Third star
+    public GameObject star1;                 
+    public GameObject star2;                 
+    public GameObject star3;                
 
     [Header("Buttons")]
     public Button nextLevelButton;           // Load next level
@@ -31,8 +30,8 @@ public class LevelCompleteUI : MonoBehaviour
     public Button mainMenuButton;            // Return to main menu
 
     [Header("Animation Settings")]
-    public float fadeDuration = 1.5f;        // How long fade to black takes
-    public float resultDelay = 0.3f;         // Delay between each result appearing
+    public float fadeDuration = 1.5f;        
+    public float resultDelay = 0.3f;         
 
     [Header("Star Settings")]
     public Sprite starFilledSprite;  
@@ -58,9 +57,6 @@ public class LevelCompleteUI : MonoBehaviour
             fadeOverlay.color = c;
             fadeOverlay.gameObject.SetActive(false);
         }
-
-        // Hide ALL results immediately at start
-        // So nothing shows before animation plays
         SetAllResultsVisible(false);
         SetStarActive(star1, false);
         SetStarActive(star2, false);
@@ -77,30 +73,23 @@ public class LevelCompleteUI : MonoBehaviour
     }
 
     // =========================================
-    // SHOW LEVEL COMPLETE
+    // SHOW LEVEL COMPLETE triggers when player step foot on the elevator
     // =========================================
-
-    // Called by Elevator when player enters
     public void ShowLevelComplete(LevelData levelData)
     {
         currentLevelData = levelData;
 
-        // Stop score tracking
         if (ScoreManager.Instance != null)
             ScoreManager.Instance.StopTracking();
 
-        // Hide hotbar and pause button
         if (UIManager.Instance != null)
             UIManager.Instance.HideGameplayUI();
 
-        // Show panel
         levelCompletePanel.SetActive(true);
 
-        // Show cursor for buttons
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        // Start fade then show results
         StartCoroutine(FadeInThenShowResults());
     }
 
@@ -108,7 +97,6 @@ public class LevelCompleteUI : MonoBehaviour
     // FADE IN ANIMATION
     // =========================================
 
-    // Fades screen to black then shows results
     private IEnumerator FadeInThenShowResults()
     {
         // Enable fade overlay
@@ -118,7 +106,7 @@ public class LevelCompleteUI : MonoBehaviour
 
             float elapsed = 0f;
 
-            // Fade from transparent to black
+            //fade to black
             while (elapsed < fadeDuration)
             {
                 elapsed += Time.unscaledDeltaTime;
@@ -132,29 +120,23 @@ public class LevelCompleteUI : MonoBehaviour
             }
         }
 
-        // Small pause at full black
+        // animation dramatic purposes
         yield return new WaitForSecondsRealtime(0.3f);
 
-        // Show level complete panel
         levelCompletePanel.SetActive(true);
 
-        // Animate results appearing
         StartCoroutine(AnimateResults());
     }
 
     // =========================================
     // RESULTS ANIMATION
     // =========================================
-
-    // Shows results one by one with delay
     private IEnumerator AnimateResults()
     {
-        // Hide all results first
         SetAllResultsVisible(false);
 
         yield return new WaitForSecondsRealtime(resultDelay);
 
-        // Show level name
         if (levelNameText != null)
         {
             levelNameText.gameObject.SetActive(true);
@@ -199,7 +181,7 @@ public class LevelCompleteUI : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(resultDelay);
 
-        // Show final score counting up
+        // Show final score
         if (finalScoreText != null)
         {
             finalScoreText.gameObject.SetActive(true);
@@ -229,8 +211,6 @@ public class LevelCompleteUI : MonoBehaviour
         // Check if next level exists
         CheckNextLevel();
     }
-
-    // Counts score up from 0 to final value
     private IEnumerator CountUpScore(int targetScore)
     {
         float elapsed = 0f;
@@ -254,7 +234,6 @@ public class LevelCompleteUI : MonoBehaviour
         {
             finalScoreText.text = "Score: " + targetScore;
 
-            // Color based on score
             if (targetScore >= 350)
                 finalScoreText.color = Color.green;
             else if (targetScore >= 200)
@@ -267,11 +246,8 @@ public class LevelCompleteUI : MonoBehaviour
     // =========================================
     // STAR ANIMATION
     // =========================================
-
-    // Stars pop in one by one
     private IEnumerator AnimateStars(int starCount)
     {
-        // Hide all stars first
         SetStarActive(star1, false);
         SetStarActive(star2, false);
         SetStarActive(star3, false);
@@ -317,7 +293,7 @@ public class LevelCompleteUI : MonoBehaviour
         Debug.Log("Stars shown: " + starCount);
     }
 
-    // Sets star color based on whether earned
+    // Sets star color based on score
     private void SetStarColor(GameObject star, bool earned)
     {
         if (star == null) return;
@@ -326,18 +302,16 @@ public class LevelCompleteUI : MonoBehaviour
         {
             // Swap sprite based on earned
             img.sprite = earned ? starFilledSprite : starEmptySprite;
-            img.color = Color.white; // keep white so PNG shows true color ✓
+            img.color = Color.white; 
         }
     }
 
-    // Sets star active state
     private void SetStarActive(GameObject star, bool active)
     {
         if (star != null)
             star.SetActive(active);
     }
 
-    // Hides all result texts
     private void SetAllResultsVisible(bool visible)
     {
         if (levelNameText != null) levelNameText.gameObject.SetActive(visible);
@@ -385,7 +359,6 @@ public class LevelCompleteUI : MonoBehaviour
     // =========================================
     // BUTTON CHECKS
     // =========================================
-
     private void CheckNextLevel()
     {
         if (nextLevelButton == null) return;
@@ -399,7 +372,6 @@ public class LevelCompleteUI : MonoBehaviour
     // =========================================
     // BUTTONS
     // =========================================
-
     public void LoadNextLevel()
     {
         if (currentLevelData == null) return;
@@ -428,7 +400,6 @@ public class LevelCompleteUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         levelCompletePanel.SetActive(false);
 
-        // Show gameplay UI again if retrying
         if (UIManager.Instance != null)
             UIManager.Instance.ShowGameplayUI();
     }

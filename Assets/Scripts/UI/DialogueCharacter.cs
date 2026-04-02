@@ -161,8 +161,20 @@ public class DialogueCharacter : MonoBehaviour
         DialogueLine line = dialogueQueue.Dequeue();
         UpdateMood(line.mood);
 
+        // Stop previous coroutine properly 
         if (typingCoroutine != null)
+        {
             StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+
+        // Reset text before starting new line 
+        if (dialogueText != null)
+            dialogueText.text = "";
+
+        // Hide tap to continue before typing 
+        if (tapToContinueText != null)
+            tapToContinueText.SetActive(false);
 
         typingCoroutine = StartCoroutine(TypeText(line.text));
     }
@@ -187,14 +199,19 @@ public class DialogueCharacter : MonoBehaviour
         if (tapToContinueText != null)
             tapToContinueText.SetActive(true);
     }
-
     public void OnPanelTapped()
     {
         if (!isShowing) return;
 
         if (isTyping)
         {
-            StopCoroutine(typingCoroutine);
+            // Skip typing show full text 
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+                typingCoroutine = null;
+            }
+
             isTyping = false;
             dialogueText.text = currentFullText;
 
@@ -203,6 +220,10 @@ public class DialogueCharacter : MonoBehaviour
         }
         else
         {
+            // Hide tap to continue
+            if (tapToContinueText != null)
+                tapToContinueText.SetActive(false);
+
             ShowNextLine();
         }
     }

@@ -18,22 +18,26 @@ MonoBehaviour:
   - hello
   - helloo
   - shazam
-  - 'insert into students (id, name, age)
+  - 'insert into employees (id, name, department)
 
-    values (1, ''Anna'', 20);'
-  - 'insert into students(id, name, age)
+    values (1, ''Anna'', ''finance'');'
+  - 'insert into employees(id, name, department)
 
-    values (1, ''Anna'', 20);'
-  - 'INSERT INTO STUDENTS(ID, NAME, AGE)
+    values (1, ''Anna'', ''finance'');'
+  - 'INSERT INTO EMPLOYEES(ID, NAME, DEPARTMENT)
 
-    VALUES (1, ''ANNA'', 20);'
-  - 'INSERT INTO STUDENTS (ID, NAME, AGE)
+    VALUES (1, ''ANNA'', ''FINANCE'');'
+  - 'INSERT INTO EMPLOYEES (ID, NAME, DEPARTMENT)
 
-    VALUES (1, ''ANNA'', 20);'
-  - 'insert into students (id, name, age)
+    VALUES (1, ''ANNA'', ''FINANCE'');'
+  - 'insert into employees (id, name, department)
 
-    values (1, ''anna'', 20);'
-  - 'insert into students(id, name, age)
+    values (1, ''anna'', ''finance'');'
+  - 'insert into employees(id, name, department)
 
-    values (1, ''anna'', 20);'
+    values (1, ''anna'', ''finance'');'
+  - insert into employees(id, name, department) values (1, 'anna', 'finance');
+  - INSERT INTO EMPLOYEES (ID, NAME, DEPARTMENT) VALUES (1, 'ANNA', 'FINANCE');
+  - insert into employees(id, name, department) values (1, 'Anna', 'finance');
+  - insert into employees (id, name, department) values (1, 'Anna', 'finance');
   fragmentsRequired: 4

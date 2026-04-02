@@ -45,7 +45,7 @@ public class QuestManager : MonoBehaviour
 
         // Quest 2 panel hidden until quest 1 complete
         if (quest2Panel != null)
-            quest2Panel.SetActive(false);
+            quest2Panel.SetActive(true);
 
         if (quest3Panel != null)
             quest3Panel.SetActive(false);
@@ -106,6 +106,8 @@ public class QuestManager : MonoBehaviour
 
         quest1CountText.text = fragmentsCollected + "/" + fragmentsRequired;
         quest1CountText.color = Color.white;
+
+        quest2CountText.color = Color.white;
     }
 
     // Called when all fragments are collected

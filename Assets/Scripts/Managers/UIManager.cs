@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuPanel;
 
     [Header("Gameplay UI")]
-    public GameObject hotbarCanvas;      // drag your hotbar canvas ✓
+    public GameObject hotbarCanvas;      // drag your hotbar canvas 
     public GameObject pauseButton;
 
     [Header("Settings Sliders")]
@@ -82,7 +82,7 @@ public class UIManager : MonoBehaviour
         else
             Debug.LogWarning("LaptopManager not found!");
 
-        HideInteractLabel(); // Hide label when laptop opens 
+        HideInteractLabel(); // Hide label when panel opens
     }
 
     public void CloseLaptop()
@@ -131,7 +131,7 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
 
             if (keycardText != null)
-                keycardText.text = "ACCESS KEYCARD\n\nFind the elevator\nand insert this keycard\nto proceed.";
+                keycardText.text = "ACCESS KEYCARD\nFind the elevator\nand insert this keycard\nto proceed.";
         }
         else
             Debug.LogWarning("KeycardPanel is NULL!");
