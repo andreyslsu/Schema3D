@@ -34,13 +34,33 @@ public class LevelDialogue : MonoBehaviour
     private bool hasShownLaptopHint = false;
     private bool hasShownKeycardHint = false;
 
+    [Header("Title Card")]
+    public string locationName = "Floor 1";
+    public string locationSubtitle = "The Lobby";
+
     private void Start()
     {
         if (professor == null)
             professor = FindFirstObjectByType<DialogueCharacter>();
 
-        if (showIntroOnStart)
-            Invoke("ShowIntroDialogue", introDelay);
+        // Show title card first then intro ✓
+        if (TitleCard.Instance != null)
+        {
+            TitleCard.Instance.Show(
+                locationName,
+                locationSubtitle,
+                () =>
+                {
+                    // After title card show intro ✓
+                    if (showIntroOnStart)
+                        Invoke("ShowIntroDialogue", introDelay);
+                });
+        }
+        else
+        {
+            if (showIntroOnStart)
+                Invoke("ShowIntroDialogue", introDelay);
+        }
     }
 
     // =========================================
