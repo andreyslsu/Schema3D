@@ -4848,7 +4848,7 @@ MonoBehaviour:
   timePenaltyRate: 2
   fragmentSpeedBonus: 30
   speedBonusTimeLimit: 10
-  maxTime: 480
+  maxTime: 500
   enableGameOver: 1
 --- !u!4 &193957121
 Transform:
@@ -33510,6 +33510,7 @@ MonoBehaviour:
   extraDialogues: []
   showIntroOnStart: 1
   introDelay: 0.5
+  titleCard: {fileID: 294373629}
   locationName: The Lobby
   locationSubtitle: Floor 1
 --- !u!4 &1201620826

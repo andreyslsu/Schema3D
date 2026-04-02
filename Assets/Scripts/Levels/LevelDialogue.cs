@@ -35,6 +35,7 @@ public class LevelDialogue : MonoBehaviour
     private bool hasShownKeycardHint = false;
 
     [Header("Title Card")]
+    public TitleCard titleCard;
     public string locationName = "Floor 1";
     public string locationSubtitle = "The Lobby";
 
@@ -43,15 +44,14 @@ public class LevelDialogue : MonoBehaviour
         if (professor == null)
             professor = FindFirstObjectByType<DialogueCharacter>();
 
-        // Show title card first then intro ✓
-        if (TitleCard.Instance != null)
+        // Use direct reference instead of singleton 
+        if (titleCard != null)
         {
-            TitleCard.Instance.Show(
+            titleCard.Show(
                 locationName,
                 locationSubtitle,
                 () =>
                 {
-                    // After title card show intro ✓
                     if (showIntroOnStart)
                         Invoke("ShowIntroDialogue", introDelay);
                 });
