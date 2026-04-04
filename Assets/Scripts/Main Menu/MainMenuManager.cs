@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject levelSelectPanel;
     public GameObject leaderboardPanel;
     public GameObject signinPanel;
+    public GameObject quitPanel;
 
     [Header("Settings Sliders")]
     public Slider volumeSlider;
@@ -244,6 +245,16 @@ public class MainMenuManager : MonoBehaviour
     // =========================================
     // QUIT
     // =========================================
+
+    public void OpenQuit()
+    { 
+        quitPanel.SetActive(true);
+    }
+
+    public void CloseQuit()
+    {
+        quitPanel.SetActive(false);
+    }
 
     public void QuitGame()
     {

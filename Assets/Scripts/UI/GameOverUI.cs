@@ -147,15 +147,17 @@ public class GameOverUI : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.3f);
 
-        // Show time
         if (timeText != null && ScoreManager.Instance != null)
         {
             timeText.gameObject.SetActive(true);
             float time = ScoreManager.Instance.GetTime();
             int minutes = Mathf.FloorToInt(time / 60);
             int seconds = Mathf.FloorToInt(time % 60);
-            timeText.text = "Time: " +
+
+            // Show how long they lasted ✓
+            timeText.text = "Time Elapsed: " +
                 string.Format("{0:00}:{1:00}", minutes, seconds);
+            timeText.color = Color.white;
         }
 
         yield return new WaitForSecondsRealtime(0.3f);

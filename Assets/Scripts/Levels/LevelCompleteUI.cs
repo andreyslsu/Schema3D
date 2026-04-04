@@ -154,7 +154,18 @@ public class LevelCompleteUI : MonoBehaviour
             float time = ScoreManager.Instance.GetTime();
             int minutes = Mathf.FloorToInt(time / 60);
             int seconds = Mathf.FloorToInt(time % 60);
-            timeText.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+
+            // Show as completion time ✓
+            timeText.text = "Completed in: " +
+                string.Format("{0:00}:{1:00}", minutes, seconds);
+
+            // Color based on speed ✓
+            if (time <= 120f)           // under 2 mins
+                timeText.color = Color.green;
+            else if (time <= 300f)      // under 5 mins
+                timeText.color = Color.yellow;
+            else
+                timeText.color = Color.white;
         }
 
         yield return new WaitForSecondsRealtime(resultDelay);
