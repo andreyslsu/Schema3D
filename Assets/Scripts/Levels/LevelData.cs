@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 
@@ -15,4 +15,11 @@ public class LevelData : ScriptableObject
 
     [Header("Quest Settings")]
     public int fragmentsRequired;
+
+    [Header("Result Visualization")]  // NEW 
+    public Sprite resultImage;         // drag your table image 
+    [TextArea(2, 5)]
+    public string resultTitle;         // e.g "Table Created!" 
+    [TextArea(3, 8)]
+    public string resultDescription;   // explanation text 
 }

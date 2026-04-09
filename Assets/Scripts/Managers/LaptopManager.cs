@@ -147,15 +147,39 @@ public class LaptopManager : MonoBehaviour
     private IEnumerator TriggerLevelComplete()
     {
         yield return new WaitForSecondsRealtime(1.5f);
+
+        // Close laptop first 
         CloseLaptop();
 
-        // Mark quest 2 complete
+        // Mark quest complete 
         if (QuestManager.Instance != null)
             QuestManager.Instance.OnLaptopQuestComplete();
         else
             Debug.LogWarning("QuestManager not found!");
 
-        // Give player keycard
+        // Show result visualization 
+        // Keycard given AFTER player closes image 
+        if (ResultVisualizationUI.Instance != null &&
+            currentLevelData != null)
+        {
+            ResultVisualizationUI.Instance.ShowResult(
+                currentLevelData,
+                () =>
+                {
+                    // This fires when player taps X 
+                    GiveKeycardAfterResult();
+                });
+        }
+        else
+        {
+            // No result UI found
+            // give keycard directly 
+            GiveKeycardAfterResult();
+        }
+    }
+
+    private void GiveKeycardAfterResult()
+    {
         if (Keycard.Instance != null)
             Keycard.Instance.GiveKeycard();
         else

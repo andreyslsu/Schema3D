@@ -20,50 +20,11 @@ MonoBehaviour:
   - '"www"'
   - create database company_db; create table employees (id int, name varchar(50),
     department varchar(30));
-  - 'CREATE DATABASE company_db;
-
-    CREATE TABLE employees(
-
-    id INT,
-
-    name
-    VARCHAR(50),
-
-    department VARCHAR(30)
-
-    );'
-  - create database company_db;create table employees(id int,name varchar(50),department
-    varchar(30));
-  - CREATE DATABASE company_db; CREATE TABLE employees (id INT, name VARCHAR(50),
-    department VARCHAR(30));
-  - 'create database company_db;
-
-    create table employees(
-
-    id int,
-
-    name
-    varchar(50),
-
-    department varchar(30)
-
-    );'
-  - CREATE database COMPANY_DB; CREATE table EMPLOYEES (ID int, NAME varchar(50),
-    DEPARTMENT varchar(30));
-  - CREATE   DATABASE   company_db ;   CREATE   TABLE   employees ( id   INT , name  
-    VARCHAR(50) , department   VARCHAR(30)) ;
-  - create    database company_db;    create table employees ( id int , name varchar(50)
-    , department varchar(30) );
-  - create    database company_db;    create table employees ( id int , name varchar(50)
-    , department varchar(30) );
-  - CREATE DATABASE company_db;CREATE TABLE employees(id INT,name VARCHAR(50),department
-    VARCHAR(30));
-  - "create database company_db;\ncreate table employees(\n\tid int,\n\tname varchar(50),\n\tdepartment
-    varchar(30)\n);"
-  - "CREATE DATABASE company_db; \nCREATE TABLE employees (\n\tid INT,\n\tname VARCHAR(50),\n\tdepartment
-    VARCHAR(30));"
-  - "CREATE DATABASE COMPANY_DB; \nCREATE TABLE EMPLOYEES (\n\tID INT,\n\tNAME VARCHAR(50),\n\tDEPARTMENT
-    VARCHAR(30));"
-  - CREATE DATABASE COMPANY_DB; CREATE TABLE EMPLOYEES (ID INT, NAME VARCHAR(50),
-    DEPARTMENT VARCHAR(30));
+  - create database company_db; create table employees (id int, name varchar(50),
+    department varchar(30));
+  - "create database company_db; \n\ncreate table employees ( \n\tid int, \n\tname
+    varchar(50), \n\tdepartment varchar(30) \n);"
   fragmentsRequired: 4
+  resultImage: {fileID: 21300000, guid: afc52bbc57dbd034c9a93a8e90c28464, type: 3}
+  resultTitle: Success...
+  resultDescription: Database and Table successfully created.
