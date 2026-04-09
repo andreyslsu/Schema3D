@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
     [Header("Score Settings")]
-    public int baseScore = 1000;
+    public int baseScore = 500;
     public int errorPenalty = 25;
     public int fragmentSpeedBonus = 30;
 
@@ -13,7 +14,7 @@ public class ScoreManager : MonoBehaviour
     public float speedBonusTimeLimit = 30f;
 
     [Header("Game Over Settings")]
-    public float maxTime = 1200f;  // 10 minutes max ✓
+    public float maxTime = 5000f;  // 10 minutes max 
     public bool enableGameOver = true;
 
     // Private tracking
@@ -33,13 +34,12 @@ public class ScoreManager : MonoBehaviour
     {
         if (!isTracking) return;
 
-        // Timer counts UP ✓
+        // Timer counts UP 
         timeElapsed += Time.deltaTime;
 
-        // Game over only if max time exceeded ✓
-        if (enableGameOver && timeElapsed >= maxTime)
+        
+        if (enableGameOver && CalculateFinalScore() <= 0)
         {
-            timeElapsed = maxTime;
             isTracking = false;
             TriggerGameOver();
         }
@@ -82,11 +82,13 @@ public class ScoreManager : MonoBehaviour
     {
         errorCount++;
         Debug.Log("Error! Total: " + errorCount);
+
     }
 
+    
     public void OnFragmentCollected()
     {
-        // Speed bonus if collected quickly ✓
+        // Speed bonus if collected quickly 
         if (lastFragmentTime == 0f ||
             timeElapsed - lastFragmentTime
             <= speedBonusTimeLimit)
@@ -110,14 +112,9 @@ public class ScoreManager : MonoBehaviour
 
     public int CalculateFinalScore()
     {
-        // Score = base - error penalties + bonuses ✓
-        // Time does NOT reduce score ✓
+        // Score = base - error penalties + bonuses 
         int errorTotal = errorCount * errorPenalty;
-
-        int finalScore = Mathf.Max(0,
-            baseScore
-            - errorTotal
-            + bonusPoints);
+        int finalScore = baseScore - errorTotal + bonusPoints;
 
         return finalScore;
     }
@@ -126,21 +123,22 @@ public class ScoreManager : MonoBehaviour
     {
         int score = CalculateFinalScore();
 
-        // Stars based on score only ✓
+        // Stars based on score only 
        
-        if (score >= 900) return 3;     
-        else if (score >= 750) return 2; 
+        if (score >= 375) return 3;     
+        else if (score >= 250) return 2; 
         else if (score > 0) return 1;    
         else return 0;
     }
 
+    // trigger game over
     private void TriggerGameOver()
     {
-        Debug.Log("Time ran out!");
+        Debug.Log("base score is 0");
 
         if (GameOverUI.Instance != null)
             GameOverUI.Instance.ShowGameOver(
-                "You ran out of time!");
+                "Your base score ran out!");
         else
             Debug.LogWarning("GameOverUI not found!");
     }

@@ -245,9 +245,9 @@ public class LevelCompleteUI : MonoBehaviour
         {
             finalScoreText.text = "Score: " + targetScore;
 
-            if (targetScore >= 350)
+            if (targetScore >= 375)
                 finalScoreText.color = Color.green;
-            else if (targetScore >= 200)
+            else if (targetScore >= 250)
                 finalScoreText.color = Color.yellow;
             else
                 finalScoreText.color = Color.red;

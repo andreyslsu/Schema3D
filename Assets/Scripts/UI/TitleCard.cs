@@ -15,8 +15,8 @@ public class TitleCard : MonoBehaviour
     public Image backgroundOverlay;
 
     [Header("Animation Settings")]
-    public float lineDuration = 0.3f;
-    public float textFadeDuration = 0.4f;
+    public float lineDuration = 0f;
+    public float textFadeDuration = 0f;
     public float displayDuration = 2.5f;
     public float fadeOutDuration = 0.5f;
 
@@ -81,7 +81,7 @@ public class TitleCard : MonoBehaviour
         // Fade in overlay 
         yield return StartCoroutine(
             FadeGraphic(backgroundOverlay,
-            0f, overlayColor.a, 0.2f));
+            0f, overlayColor.a, 0f));
 
         // Expand lines 
         yield return StartCoroutine(

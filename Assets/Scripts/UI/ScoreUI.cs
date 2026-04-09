@@ -42,7 +42,7 @@ public class ScoreUI : MonoBehaviour
     {
         if (ScoreManager.Instance == null) return;
 
-        // Update score ✓
+        // Update score 
         int score = ScoreManager.Instance
             .CalculateFinalScore();
 
@@ -51,16 +51,16 @@ public class ScoreUI : MonoBehaviour
             scoreText.text = "Score: " + score;
 
             // Color based on errors 
-            if (score >= 900)
+            if (score >= 500)
                 scoreText.color = Color.green;
-            else if (score >= 750)
+            else if (score >= 250)
                 scoreText.color = Color.yellow;
             else
                 scoreText.color = Color.red;
         }
 
-        // Timer counts UP ✓
-        // Shows time elapsed ✓
+        // Timer counts UP 
+        // Shows time elapsed 
         float time = ScoreManager.Instance.GetTime();
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);
@@ -71,12 +71,12 @@ public class ScoreUI : MonoBehaviour
                 string.Format("{0:00}:{1:00}",
                 minutes, seconds);
 
-            // No warning colors ✓
-            // Time just counts up ✓
+            // No warning colors 
+            // Time just counts up 
             timerText.color = Color.white;
         }
 
-        // Update errors ✓
+        // Update errors 
         if (errorsText != null)
         {
             int errors = ScoreManager.Instance.GetErrors();
@@ -85,7 +85,7 @@ public class ScoreUI : MonoBehaviour
                 Color.red : Color.white;
         }
 
-        // Update bonus ✓
+        // Update bonus 
         if (bonusText != null)
         {
             int bonus = ScoreManager.Instance
