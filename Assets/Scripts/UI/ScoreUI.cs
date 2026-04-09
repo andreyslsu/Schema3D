@@ -59,8 +59,7 @@ public class ScoreUI : MonoBehaviour
                 scoreText.color = Color.red;
         }
 
-        // Timer counts UP 
-        // Shows time elapsed 
+        // Timer counts UP  
         float time = ScoreManager.Instance.GetTime();
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);

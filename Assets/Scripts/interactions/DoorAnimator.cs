@@ -23,8 +23,8 @@ public class DoorAnimator : MonoBehaviour
     public DoorType doorType = DoorType.Slide;
 
     [Header("Door Meshes")]
-    public Transform doorA;         // Single or Left door
-    public Transform doorB;         // Right door (double only)
+    public Transform doorA;         // single doors lang
+    public Transform doorB;         // double doors type shi -- add sa susunod na levels 
 
     [Header("Slide Settings")]
     public SlideAxis slideAxis = SlideAxis.X;
@@ -80,21 +80,17 @@ public class DoorAnimator : MonoBehaviour
                     GetSlideVector() * slideDistance;
             }
         }
-        else // Swing
+        else 
         {
             doorAClosedRot = doorA.localRotation;
-
-            // Get correct swing axis
+            
             Vector3 axis = GetSwingVector();
 
-            // Apply angle on correct axis
             doorAOpenRot = Quaternion.AngleAxis(
                 swingInward ? -swingAngle : swingAngle,
                 axis) * doorAClosedRot;
         }
     }
-
-    // Gets slide direction vector
     private Vector3 GetSlideVector()
     {
         switch (slideAxis)

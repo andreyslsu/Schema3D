@@ -9,15 +9,15 @@ public class LevelCompleteUI : MonoBehaviour
     public static LevelCompleteUI Instance;
 
     [Header("Level Complete Panel")]
-    public GameObject levelCompletePanel;    // Main level complete panel
-    public Image fadeOverlay;                // Full screen black image for fade
+    public GameObject levelCompletePanel;    
+    public Image fadeOverlay;             
 
     [Header("Score Display")]
-    public TextMeshProUGUI finalScoreText;   // Shows final score
-    public TextMeshProUGUI timeText;         // Shows time taken
-    public TextMeshProUGUI errorsText;       // Shows error count
-    public TextMeshProUGUI bonusText;        // Shows bonus points
-    public TextMeshProUGUI levelNameText;    // Shows level name
+    public TextMeshProUGUI finalScoreText;   
+    public TextMeshProUGUI timeText;         
+    public TextMeshProUGUI errorsText;      
+    public TextMeshProUGUI bonusText;        
+    public TextMeshProUGUI levelNameText;    
 
     [Header("Star Rating")]
     public GameObject star1;                 
@@ -25,9 +25,9 @@ public class LevelCompleteUI : MonoBehaviour
     public GameObject star3;                
 
     [Header("Buttons")]
-    public Button nextLevelButton;           // Load next level
-    public Button retryButton;               // Reload current level
-    public Button mainMenuButton;            // Return to main menu
+    public Button nextLevelButton;          
+    public Button retryButton;               
+    public Button mainMenuButton;            
 
     [Header("Animation Settings")]
     public float fadeDuration = 1.5f;        
@@ -155,14 +155,14 @@ public class LevelCompleteUI : MonoBehaviour
             int minutes = Mathf.FloorToInt(time / 60);
             int seconds = Mathf.FloorToInt(time % 60);
 
-            // Show as completion time ✓
+            // Show as completion time 
             timeText.text = "Completed in: " +
                 string.Format("{0:00}:{1:00}", minutes, seconds);
 
-            // Color based on speed ✓
-            if (time <= 120f)           // under 2 mins
+            // Color based on speed 
+            if (time <= 120f)           
                 timeText.color = Color.green;
-            else if (time <= 300f)      // under 5 mins
+            else if (time <= 300f)     
                 timeText.color = Color.yellow;
             else
                 timeText.color = Color.white;
@@ -216,10 +216,8 @@ public class LevelCompleteUI : MonoBehaviour
         if (mainMenuButton != null)
             mainMenuButton.gameObject.SetActive(true);
 
-        // Save progress
         SaveProgress();
-
-        // Check if next level exists
+        
         CheckNextLevel();
     }
     private IEnumerator CountUpScore(int targetScore)
@@ -240,7 +238,7 @@ public class LevelCompleteUI : MonoBehaviour
             yield return null;
         }
 
-        // Make sure final value is exact
+        
         if (finalScoreText != null)
         {
             finalScoreText.text = "Score: " + targetScore;
@@ -357,7 +355,7 @@ public class LevelCompleteUI : MonoBehaviour
         if (stars > savedStars)
             PlayerPrefs.SetInt(levelName + "_Stars", stars);
 
-        // Mark level as played ← NEW
+        // Mark level as played
         PlayerPrefs.SetInt(levelName + "_Played", 1);
 
         // Unlock next level

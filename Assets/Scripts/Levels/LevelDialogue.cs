@@ -5,9 +5,7 @@ public class LevelDialogue : MonoBehaviour
 {
     [Header("Characters")]
     public DialogueCharacter professor;
-    // Add more characters here as needed 
-    // public DialogueCharacter hacker;
-    // public DialogueCharacter guardian;
+    // DITO PWEDE MAG ADD NG CHARACTERS
 
     [Header("Intro Dialogue")]
     public DialogueData introDialogue;
@@ -75,11 +73,11 @@ public class LevelDialogue : MonoBehaviour
 
         professor.ShowDialogue(introDialogue, () =>
         {
-            // Start score after intro ✓
+            // Start score after intro 
             if (ScoreManager.Instance != null)
                 ScoreManager.Instance.StartTracking();
 
-            // Show quest panel ✓
+            // Show quest panel 
             if (QuestManager.Instance != null)
                 QuestManager.Instance.ShowQuestPanel();
         });
@@ -134,7 +132,7 @@ public class LevelDialogue : MonoBehaviour
     // CUSTOM DIALOGUES
     // =========================================
 
-    // Call by index from extraDialogues list ✓
+    
     public void ShowExtraDialogue(int index)
     {
         if (professor == null) return;
@@ -144,7 +142,7 @@ public class LevelDialogue : MonoBehaviour
         professor.ShowDialogue(extraDialogues[index]);
     }
 
-    // Call with specific character and data ✓
+    // Call with CHARACTER GAGAMITIN NEXT CHARACTER
     public void ShowCustomDialogue(
         DialogueCharacter character,
         DialogueData data,

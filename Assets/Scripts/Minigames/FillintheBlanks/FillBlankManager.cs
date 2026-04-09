@@ -51,7 +51,7 @@ public class FillBlankManager : MonoBehaviour
     }
 
     // =========================================
-    // OPEN / CLOSE
+    // OPEN/CLOSE UI
     // =========================================
 
     public void OpenFillBlank(
@@ -97,7 +97,7 @@ public class FillBlankManager : MonoBehaviour
     }
 
     // =========================================
-    // SETUP
+    // INSPECTOR QUESTION
     // =========================================
 
     private void SetupQuestion()
@@ -172,7 +172,7 @@ public class FillBlankManager : MonoBehaviour
 
     private IEnumerator HandleCorrect(string choice)
     {
-        // Flash green
+        // Flash green CORRECT ANSWER
         if (panelImage != null)
         {
             panelImage.color = Color.green;
@@ -218,7 +218,7 @@ public class FillBlankManager : MonoBehaviour
 
     private IEnumerator HandleWrong(string choice)
     {
-        // Flash red
+        // Flash red IF MALI
         if (panelImage != null)
         {
             panelImage.color = Color.red;

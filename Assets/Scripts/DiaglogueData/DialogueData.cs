@@ -7,7 +7,7 @@ public class DialogueData : ScriptableObject
     [System.Serializable]
     public class Line
     {
-        [TextArea(2, 5)]  // multiline text box in Inspector 
+        [TextArea(2, 5)] 
         public string text;
         public DialogueCharacter.Mood mood;
     }

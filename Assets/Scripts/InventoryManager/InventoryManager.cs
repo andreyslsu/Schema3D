@@ -19,7 +19,7 @@ public class InventoryManager : MonoBehaviour
         {
             collectedFragments.Add(clue);
 
-            // Update hotbar when fragment added
+            // Update hotbar 
             UIManager.Instance.UpdateFragmentHotbar();
         }
     }

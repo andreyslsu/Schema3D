@@ -1,30 +1,31 @@
 using UnityEngine;
 
-// Fragment object that displays a clue when picked up
 public class Fragment : Interactable
 {
     [TextArea]
-    public string fragmentClue; // Text to show in fragment panel
+    public string fragmentClue; // string text to show as clue for fragment
 
     public override void Interact()
     {
-        // Add to inventory
+        // add inventory
         InventoryManager.Instance.AddFragment(fragmentClue);
 
-        // Show fragment clue panel
+        // show inventory ins from ui man
         UIManager.Instance.ShowFragment(fragmentClue);
 
-        // Update quest tracker
+        // fragment tracker
         if (QuestManager.Instance != null)
             QuestManager.Instance.OnFragmentCollected();
         else
             Debug.LogWarning("QuestManager not found!");
 
-        // Track score bonus for fragment collection speed
+        // track for bonus points for every fragment
         if (ScoreManager.Instance != null)
             ScoreManager.Instance.OnFragmentCollected();
         else
             Debug.LogWarning("ScoreManager not found!");
+
+        // dialogue for found fragments
 
         LevelDialogue levelDialogue =
         FindFirstObjectByType<LevelDialogue>();

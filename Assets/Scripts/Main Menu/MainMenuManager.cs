@@ -22,11 +22,10 @@ public class MainMenuManager : MonoBehaviour
     public Button level3Button;
     public Button level4Button;
     public Button level5Button;
-    // Add more as you add levels 
 
     [Header("Level Button Locks")]
-    public GameObject level1LockIcon;   // Lock icon on level 1 button
-    public GameObject level2LockIcon;   // Lock icon on level 2 button
+    public GameObject level1LockIcon;  
+    public GameObject level2LockIcon;  
     public GameObject level3LockIcon;  
     public GameObject level4LockIcon; 
     public GameObject level5LockIcon;
@@ -53,8 +52,8 @@ public class MainMenuManager : MonoBehaviour
     public Image level5Star3;
 
     [Header("Star Sprites")]
-    public Sprite starFilledSprite;   // drag colored star PNG ✓
-    public Sprite starEmptySprite;    // drag black/white star PNG ✓
+    public Sprite starFilledSprite;  
+    public Sprite starEmptySprite;   
 
     // =========================================
     // LEVEL SELECT
@@ -63,7 +62,7 @@ public class MainMenuManager : MonoBehaviour
     public void OpenLevelSelect()
     {
         levelSelectPanel.SetActive(true);
-        RefreshLevelSelect(); // Update locks and stars 
+        RefreshLevelSelect(); 
     }
 
     public void CloseLevelSelect()
@@ -71,16 +70,13 @@ public class MainMenuManager : MonoBehaviour
         levelSelectPanel.SetActive(false);
     }
 
-    // Updates each level button based on PlayerPrefs
     private void RefreshLevelSelect()
     {
-        // Level 1 always unlocked
         SetupLevelButton(
             level1Button, level1LockIcon,
             level1Star1, level1Star2, level1Star3,
             "Level1", true);
 
-        // Level 2 unlocked after Level 1
         bool level2Unlocked =
             PlayerPrefs.GetInt("Level2_Unlocked", 0) == 1;
         SetupLevelButton(
@@ -88,7 +84,6 @@ public class MainMenuManager : MonoBehaviour
             level2Star1, level2Star2, level2Star3,
             "Level2", level2Unlocked);
 
-        // Level 3 unlocked after Level 2
         bool level3Unlocked =
             PlayerPrefs.GetInt("Level3_Unlocked", 0) == 1;
         SetupLevelButton(
@@ -96,7 +91,6 @@ public class MainMenuManager : MonoBehaviour
             level3Star1, level3Star2, level3Star3,
             "Level3", level3Unlocked);
 
-        // Level 4 unlocked after Level 3
         bool level4Unlocked =
             PlayerPrefs.GetInt("Level4_Unlocked", 0) == 1;
         SetupLevelButton(
@@ -104,7 +98,6 @@ public class MainMenuManager : MonoBehaviour
             level4Star1, level4Star2, level4Star3,
             "Level4", level4Unlocked);
 
-        // Level 5 unlocked after Level 4
         bool level5Unlocked =
             PlayerPrefs.GetInt("Level5_Unlocked", 0) == 1;
         SetupLevelButton(
@@ -113,7 +106,6 @@ public class MainMenuManager : MonoBehaviour
             "Level5", level5Unlocked);
     }
 
-    // Sets up a single level button
     private void SetupLevelButton(
     Button button,
     GameObject lockIcon,
@@ -125,29 +117,24 @@ public class MainMenuManager : MonoBehaviour
 
         button.interactable = isUnlocked;
 
-        // Show or hide lock icon
         if (lockIcon != null)
             lockIcon.SetActive(!isUnlocked);
 
-        // Handle stars
         bool hasPlayed = PlayerPrefs.GetInt(sceneName + "_Played", 0) == 1;
         int stars = PlayerPrefs.GetInt(sceneName + "_Stars", 0);
 
         if (isUnlocked && hasPlayed)
         {
-            // Show stars with correct sprites
             SetLevelSelectStar(star1, stars >= 1);
             SetLevelSelectStar(star2, stars >= 2);
             SetLevelSelectStar(star3, stars >= 3);
 
-            // Show star images
             if (star1 != null) star1.gameObject.SetActive(true);
             if (star2 != null) star2.gameObject.SetActive(true);
             if (star3 != null) star3.gameObject.SetActive(true);
         }
         else
         {
-            // Hide stars if not played or locked
             if (star1 != null) star1.gameObject.SetActive(false);
             if (star2 != null) star2.gameObject.SetActive(false);
             if (star3 != null) star3.gameObject.SetActive(false);
@@ -162,12 +149,9 @@ public class MainMenuManager : MonoBehaviour
     {
         if (star == null) return;
         star.sprite = earned ? starFilledSprite : starEmptySprite;
-        star.color = Color.white; // keep white so PNG shows true color ✓
+        star.color = Color.white; 
     }
 
-    // Converts int stars to star string
-
-    // Loads a level by scene name
     public void LoadLevel(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

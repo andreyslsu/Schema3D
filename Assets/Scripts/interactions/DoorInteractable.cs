@@ -12,13 +12,13 @@ public class DoorInteractable : Interactable
 
     private void Start()
     {
-        // Set default label
+    
         interactLabel = openLabel;
     }
 
     public override void OnFocus()
     {
-        // Update label based on current door state
+        
         if (doorAnimator != null)
         {
             if (doorAnimator.IsOpen())
@@ -27,13 +27,13 @@ public class DoorInteractable : Interactable
                 interactLabel = openLabel;
         }
 
-        // Call base to show highlight and HUD label
+       
         base.OnFocus();
     }
 
     public override void OnLoseFocus()
     {
-        // Call base to hide highlight and HUD label
+        
         base.OnLoseFocus();
     }
 
@@ -47,12 +47,12 @@ public class DoorInteractable : Interactable
 
         doorAnimator.ToggleDoor();
 
-        // Update label immediately after interact
+       
         interactLabel = doorAnimator.IsOpen()
             ? closeLabel
             : openLabel;
 
-        // Update HUD label
+ 
         if (UIManager.Instance != null)
             UIManager.Instance.ShowInteractLabel(interactLabel);
     }

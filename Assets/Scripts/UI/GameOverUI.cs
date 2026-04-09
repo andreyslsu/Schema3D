@@ -154,7 +154,7 @@ public class GameOverUI : MonoBehaviour
             int minutes = Mathf.FloorToInt(time / 60);
             int seconds = Mathf.FloorToInt(time % 60);
 
-            // Show how long they lasted ✓
+            // Show how long they lasted 
             timeText.text = "Time Elapsed: " +
                 string.Format("{0:00}:{1:00}", minutes, seconds);
             timeText.color = Color.white;

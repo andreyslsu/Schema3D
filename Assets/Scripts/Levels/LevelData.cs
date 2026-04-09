@@ -6,20 +6,20 @@ using System.Collections.Generic;
 public class LevelData : ScriptableObject
 {
     [Header("Level Info")]
-    public string levelName;                 // e.g "Level 1"
-    public string nextLevelScene;            // Scene name of next level
+    public string levelName;                 
+    public string nextLevelScene;           
 
     [Header("Laptop Puzzle")]
     [TextArea(5, 15)]
-    public List<string> correctAnswers;      // Accepted answers for this level
+    public List<string> correctAnswers;     
 
     [Header("Quest Settings")]
     public int fragmentsRequired;
 
-    [Header("Result Visualization")]  // NEW 
-    public Sprite resultImage;         // drag your table image 
+    [Header("Result Visualization")]  
+    public Sprite resultImage;          
     [TextArea(2, 5)]
-    public string resultTitle;         // e.g "Table Created!" 
+    public string resultTitle;          
     [TextArea(3, 8)]
-    public string resultDescription;   // explanation text 
+    public string resultDescription;   
 }

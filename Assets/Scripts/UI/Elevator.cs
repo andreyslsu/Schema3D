@@ -14,8 +14,8 @@ public class Elevator : MonoBehaviour
     public float levelCompleteDelay = 0.5f;
 
     [Header("Entrance Settings")]
-    public bool isEntranceElevator = false;  // True = opens on spawn 
-    public float entranceOpenDelay = 2f;     // Dramatic delay 
+    public bool isEntranceElevator = false; 
+    public float entranceOpenDelay = 2f;     
 
     // Door positions
     private Vector3 leftDoorClosedPos;
@@ -40,30 +40,23 @@ public class Elevator : MonoBehaviour
             rightDoorOpenPos = rightDoorClosedPos + Vector3.right * doorOpenDistance;
         }
 
-        // Entrance elevator opens automatically after delay
-        // Exit elevator stays closed until keycard used
         if (isEntranceElevator)
             StartCoroutine(EntranceOpen());
         else
-            CloseDoors(); // Exit elevator starts closed 
+            CloseDoors(); 
     }
 
-    // Dramatic entrance open after delay
     private IEnumerator EntranceOpen()
     {
-        // Doors closed at first
         CloseDoors();
 
-        // Wait for dramatic effect
         yield return new WaitForSeconds(entranceOpenDelay);
 
-        // Then open
         OpenElevator();
 
         Debug.Log("Entrance elevator opened!");
     }
 
-    // Closes doors instantly
     private void CloseDoors()
     {
         if (leftDoor != null)
@@ -75,7 +68,6 @@ public class Elevator : MonoBehaviour
         isOpen = false;
     }
 
-    // Called by ElevatorPanel when keycard accepted
     public void OpenElevator()
     {
         if (isOpen) return;
@@ -83,7 +75,6 @@ public class Elevator : MonoBehaviour
         StartCoroutine(OpenDoors());
     }
 
-    // Smoothly slides doors open
     private IEnumerator OpenDoors()
     {
         float elapsed = 0f;
@@ -108,20 +99,18 @@ public class Elevator : MonoBehaviour
         Debug.Log("Doors fully open!");
     }
 
-    // Triggered when player walks into elevator
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
         if (!isOpen) return;
 
-        // Only exit elevator triggers level complete
+        
         if (isEntranceElevator) return;
 
         Debug.Log("Player entered exit elevator!");
         StartCoroutine(TriggerLevelComplete());
     }
 
-    // Waits then triggers level complete
     private IEnumerator TriggerLevelComplete()
     {
         yield return new WaitForSeconds(levelCompleteDelay);

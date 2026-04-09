@@ -1,16 +1,15 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Unity 6 new Input System
-using UnityEngine.EventSystems; // Required for IsPointerOverGameObject
+using UnityEngine.InputSystem; 
+using UnityEngine.EventSystems; 
 
-// Handles all player interactions: fragments and laptop
 public class PlayerInteraction : MonoBehaviour
 {
     [Header("Interaction Settings")]
-    public float interactDistance = 3f;     // Max distance to interact
-    public LayerMask interactLayer;         // Layer for fragments/laptop
+    public float interactDistance = 3f;   
+    public LayerMask interactLayer;         
 
-    private Camera cam;                     // Reference to player's camera
-    private Interactable currentInteractable; // Object player is looking at
+    private Camera cam;                    
+    private Interactable currentInteractable; 
 
     private void Awake()
     {
@@ -19,9 +18,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        // -----------------------------
-        // 1?? Raycast forward to detect interactables
-        // -----------------------------
+//=======================================
+// 1 Raycast forward to detect interactables
+//=======================================
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayer))
         {
@@ -52,16 +51,14 @@ public class PlayerInteraction : MonoBehaviour
             currentInteractable = null;
         }
 
-        // -----------------------------
-        // 2?? Detect interaction input (PC + Mobile)
-        // -----------------------------
+// =======================================
+//  Detect interaction input (PC + Mobile)
+// =======================================
         bool isClicked = false;
 
-        // PC: Left mouse click
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
             isClicked = true;
 
-        // Mobile: Touch screen tap
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
             int fingerId = Touchscreen.current.primaryTouch.touchId.ReadValue(); 
@@ -71,7 +68,6 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        // Trigger interaction
         if (currentInteractable != null && isClicked)
         {
             currentInteractable.Interact();
@@ -81,7 +77,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (context.performed)
         {
-            // Ignore interaction if touching UI
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 

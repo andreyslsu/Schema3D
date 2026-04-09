@@ -12,19 +12,16 @@ public class Keycard : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // Called by LaptopManager when correct answer submitted
     public void GiveKeycard()
     {
         hasKeycard = true;
         Debug.Log("Keycard received!");
 
-        // Show keycard panel just like fragment panel
+       
         if (UIManager.Instance != null)
-        {
-            // Add keycard to hotbar
+        {           
             UIManager.Instance.AddKeycardToHotbar();
-
-            // Show keycard panel
+  
             UIManager.Instance.ShowKeycardPanel();
         }
         else
@@ -36,18 +33,15 @@ public class Keycard : MonoBehaviour
             levelDialogue.ShowKeycardHint();
     }
 
-    // Returns whether player has keycard
     public bool HasKeycard()
     {
         return hasKeycard;
     }
 
-    // Resets keycard after used
     public void UseKeycard()
     {
         hasKeycard = false;
 
-        // Remove keycard from hotbar after use
         if (UIManager.Instance != null)
             UIManager.Instance.RemoveKeycardFromHotbar();
 

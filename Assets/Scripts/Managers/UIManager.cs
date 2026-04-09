@@ -6,24 +6,23 @@ using System.Collections;
 using StarterAssets;
 using UnityEngine.SceneManagement;
 
-// Handles all UI panels: fragment clues & laptop
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance; // Singleton
+    public static UIManager Instance; // singleton
 
     [Header("Fragment UI")]
-    public GameObject fragmentPanel;     // Panel for fragment clues
-    public TextMeshProUGUI clueText;     // Text inside fragment panel
+    public GameObject fragmentPanel;   
+    public TextMeshProUGUI clueText;    
 
     [Header("Keycard UI")]
-    public GameObject keycardPanel;          // Panel showing keycard info
-    public TextMeshProUGUI keycardText;      // Text inside keycard panel
+    public GameObject keycardPanel;          
+    public TextMeshProUGUI keycardText;  
 
-    public Transform hotbarContainer;        // HotbarPanel transform
-    public GameObject hotbarSlotPrefab;      // Fragment slot prefab
-    public GameObject keycardSlotPrefab;     // Keycard slot prefab (separate design)
+    public Transform hotbarContainer;       // pang scale ng hotbar
+    public GameObject hotbarSlotPrefab;     // frag slot
+    public GameObject keycardSlotPrefab;    // key slot
 
-    // Tracks keycard slot separately
+    
     private GameObject activeKeycardSlot;
 
     [Header("Interact Label")]
@@ -33,18 +32,18 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuPanel;
 
     [Header("Gameplay UI")]
-    public GameObject hotbarCanvas;      // drag your hotbar canvas 
+    public GameObject hotbarCanvas;      
     public GameObject pauseButton;
 
     [Header("Settings Sliders")]
-    public Slider volumeSlider;      // Drag pause menu volume slider here
-    public Slider sensitivitySlider; // Drag pause menu sensitivity slider here
+    public Slider volumeSlider;      
+    public Slider sensitivitySlider; 
 
     private bool isPaused = false;
 
     private void Awake()
     {
-        // Singleton setup
+       
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
@@ -59,22 +58,24 @@ public class UIManager : MonoBehaviour
     {
         
     }
-
-    // Show fragment clue panel
+    // =========================================
+    // FRAGMENTS
+    // =========================================
     public void ShowFragment(string clue)
     {
         fragmentPanel.SetActive(true);
         clueText.text = clue;
-        HideInteractLabel(); // Hide label when panel opens 
+        HideInteractLabel(); 
     }
 
-    // Close fragment panel
     public void CloseFragment()
     {
         fragmentPanel.SetActive(false);
         //Time.timeScale = 1f; // Resume game
     }
-
+    // =========================================
+    // LAPTOP/ COMPUTER
+    // =========================================
     public void ShowLaptop()
     {
         if (LaptopManager.Instance != null)
@@ -93,6 +94,9 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("LaptopManager not found!");
     }
 
+    // =========================================
+    // HOTBAR SETTINGS ONLE
+    // =========================================
     public void UpdateFragmentHotbar()
     {
         // Only destroy fragment slots not keycard slot
@@ -123,6 +127,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // =========================================
+    // KEYCARDS
+    // =========================================
     public void ShowKeycardPanel()
     {
         if (keycardPanel != null)
@@ -146,41 +153,36 @@ public class UIManager : MonoBehaviour
     }
     public void AddKeycardToHotbar()
     {
-        // Dont add twice
         if (activeKeycardSlot != null) return;
 
         if (keycardSlotPrefab == null)
         {
-            Debug.LogWarning("KeycardSlotPrefab is NULL!");
+            Debug.LogWarning("walang keycard");
             return;
         }
 
-        // Instantiate keycard slot in hotbar
         activeKeycardSlot = Instantiate(keycardSlotPrefab, hotbarContainer);
 
         Button button = activeKeycardSlot.GetComponent<Button>();
         TextMeshProUGUI text = activeKeycardSlot
             .GetComponentInChildren<TextMeshProUGUI>();
 
-        // Set label
         if (text != null)
             text.text = "Keycard";
 
-        // Open keycard panel on click
         if (button != null)
             button.onClick.AddListener(() => ShowKeycardPanel());
 
-        Debug.Log("Keycard added to hotbar!");
+        Debug.Log("added kkeycard to the hotbar");
     }
 
-    // Destroys keycard slot from hotbar
     public void RemoveKeycardFromHotbar()
     {
         if (activeKeycardSlot != null)
         {
             Destroy(activeKeycardSlot);
             activeKeycardSlot = null;
-            Debug.Log("Keycard removed from hotbar!");
+            Debug.Log("keycard removed from hotbar");
         }
     }
     // show interact label need para ishow pag naka hover
@@ -217,7 +219,7 @@ public class UIManager : MonoBehaviour
             pauseButton.SetActive(true);
     }
 
-    //Resume
+    // PANG RESUME
     public void TogglePause()
     {
         if (isPaused)
@@ -226,6 +228,9 @@ public class UIManager : MonoBehaviour
             PauseGame();
     }
 
+    // =========================================
+    // PAUSE / RESUME
+    // =========================================
     public void PauseGame()
     {
         pauseMenuPanel.SetActive(true);
@@ -234,12 +239,12 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         isPaused = true;
 
-        // Register and sync pause menu sliders when pausing
+        
         if (SettingsManager.Instance != null)
         {
-            // Register sliders first so SettingsManager knows which ones to update
+            // register first
             SettingsManager.Instance.RegisterSliders(volumeSlider, sensitivitySlider);
-            // Then sync them to saved PlayerPrefs values
+            // Then sync to saved PlayerPrefs values
             SettingsManager.Instance.SyncSlidersToSaved();
         }
         else
@@ -281,7 +286,7 @@ public class UIManager : MonoBehaviour
 
     public void SetSensitivity(float value)
     {
-        // If this never prints, slider is not connected to UIManager
+        // pag di nag print di connected to UI manager
         Debug.Log("UIManager SetSensitivity called: " + value);
 
         if (SettingsManager.Instance != null)

@@ -13,9 +13,9 @@ public class Interactable : MonoBehaviour
     public string interactLabel = "Press to Interact";
 
     [Header("World Space Label (Optional)")]
-    public GameObject labelObject;        // Optional world space canvas
-    public TextMeshProUGUI labelText;     // Optional world space TMP
-                                          // Leave empty if not needed
+    public GameObject labelObject;       
+    public TextMeshProUGUI labelText;     
+                                          
 
     private void Awake()
     {
@@ -23,24 +23,18 @@ public class Interactable : MonoBehaviour
         if (rend != null)
             originalMaterial = rend.material;
 
-        // Hide world space label at start if assigned
         if (labelObject != null)
             labelObject.SetActive(false);
     }
 
-    // Called when player looks at object
     public virtual void OnFocus()
     {
-        // Highlight glow
         if (rend != null && highlightMaterial != null)
             rend.material = highlightMaterial;
 
-        // Show HUD label on screen center
         if (UIManager.Instance != null)
             UIManager.Instance.ShowInteractLabel(interactLabel);
 
-        // Show world space label if assigned
-        // Only ElevatorPanel uses this
         if (labelObject != null)
         {
             labelObject.SetActive(true);
@@ -49,23 +43,18 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    // Called when player looks away
     public virtual void OnLoseFocus()
     {
-        // Remove glow
         if (rend != null && originalMaterial != null)
             rend.material = originalMaterial;
 
-        // Hide HUD label
         if (UIManager.Instance != null)
             UIManager.Instance.HideInteractLabel();
 
-        // Hide world space label if assigned
         if (labelObject != null)
             labelObject.SetActive(false);
     }
 
-    // Called when player interacts
     public virtual void Interact()
     {
         Debug.Log("Interacted with: " + gameObject.name);

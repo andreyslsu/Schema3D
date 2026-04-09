@@ -9288,59 +9288,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331531737}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &333260725
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 333260727}
-  - component: {fileID: 333260726}
-  m_Layer: 0
-  m_Name: InviCeiling
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &333260726
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333260725}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.0792947, y: 0.84223175, z: 4.471484}
-  m_Center: {x: -0.19902113, y: 1.7600284, z: 0.4218519}
---- !u!4 &333260727
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333260725}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3599997, y: 3.543, z: -43.84}
-  m_LocalScale: {x: 13, y: 0.5, z: 9}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &339165973
 GameObject:
   m_ObjectHideFlags: 0
@@ -14792,13 +14739,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4579709949592407995, guid: 81b267ad895a32f45a8d623e008cf25f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 538631633}
   m_SourcePrefab: {fileID: 100100000, guid: 81b267ad895a32f45a8d623e008cf25f, type: 3}
 --- !u!4 &538631631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1463132305271326887, guid: 81b267ad895a32f45a8d623e008cf25f, type: 3}
   m_PrefabInstance: {fileID: 538631630}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &538631632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4579709949592407995, guid: 81b267ad895a32f45a8d623e008cf25f, type: 3}
+  m_PrefabInstance: {fileID: 538631630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &538631633
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538631632}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1926403951900781465, guid: 52d20922b5253f1499382e9dd871a4b0, type: 3}
 --- !u!1 &539343797
 GameObject:
   m_ObjectHideFlags: 0
@@ -16243,7 +16220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Solved Mini Puzzles
+  m_text: Solved Mini Games
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 821a95ec8a4dd17469af80341b4e1de9, type: 2}
   m_sharedMaterial: {fileID: -3348481207838506350, guid: 821a95ec8a4dd17469af80341b4e1de9, type: 2}
@@ -19756,7 +19733,7 @@ MonoBehaviour:
   - {fileID: 554246447}
   feedbackText: {fileID: 482260605}
   feedbackDuration: 1.5
-  panelImage: {fileID: 0}
+  panelImage: {fileID: 1921424759}
   flashDuration: 0.3
 --- !u!4 &690525145
 Transform:
@@ -33016,7 +32993,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58, y: -56.340725}
+  m_AnchoredPosition: {x: -54, y: -56.340725}
   m_SizeDelta: {x: 272.4249, y: 49.871}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1152244003
@@ -51222,7 +51199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Find Laptop and Encode Fragment clues
+  m_text: Find a Computer and Encode Fragment clues
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 821a95ec8a4dd17469af80341b4e1de9, type: 2}
   m_sharedMaterial: {fileID: -3348481207838506350, guid: 821a95ec8a4dd17469af80341b4e1de9, type: 2}
@@ -56596,13 +56573,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4579709949592407995, guid: 81b267ad895a32f45a8d623e008cf25f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1998033444}
   m_SourcePrefab: {fileID: 100100000, guid: 81b267ad895a32f45a8d623e008cf25f, type: 3}
 --- !u!4 &1998033442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1463132305271326887, guid: 81b267ad895a32f45a8d623e008cf25f, type: 3}
   m_PrefabInstance: {fileID: 1998033441}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1998033443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4579709949592407995, guid: 81b267ad895a32f45a8d623e008cf25f, type: 3}
+  m_PrefabInstance: {fileID: 1998033441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1998033444
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998033443}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1926403951900781465, guid: 52d20922b5253f1499382e9dd871a4b0, type: 3}
 --- !u!1 &1998345409
 GameObject:
   m_ObjectHideFlags: 0
@@ -61140,7 +61147,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 551986496}
   - {fileID: 1798593392}
-  - {fileID: 333260727}
   - {fileID: 364138743}
   - {fileID: 1190652136}
   - {fileID: 1259654778}

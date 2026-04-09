@@ -14,10 +14,10 @@ public class ScoreManager : MonoBehaviour
     public float speedBonusTimeLimit = 30f;
 
     [Header("Game Over Settings")]
-    public float maxTime = 5000f;  // 10 minutes max 
+    public float maxTime = 5000f;  // F IS SECANDS
     public bool enableGameOver = true;
 
-    // Private tracking
+    
     private int errorCount = 0;
     private float timeElapsed = 0f;
     private bool isTracking = false;
@@ -144,7 +144,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     // =========================================
-    // GETTERS
+    // GETTTAS GETTERS FOR SCORES
     // =========================================
 
     public float GetTime() => timeElapsed;

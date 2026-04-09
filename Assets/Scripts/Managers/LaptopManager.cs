@@ -102,7 +102,6 @@ public class LaptopManager : MonoBehaviour
 
         bool correct = false;
 
-        // Check against every accepted answer
         foreach (string ans in currentLevelData.correctAnswers)
         {
             string normalizedAns = System.Text.RegularExpressions.Regex
@@ -127,7 +126,6 @@ public class LaptopManager : MonoBehaviour
             StartCoroutine(FlashPanel(Color.red));
             StartCoroutine(ShakePanel());
 
-            // Add error to score
             if (ScoreManager.Instance != null)
             {
                 ScoreManager.Instance.AddError();
@@ -148,32 +146,25 @@ public class LaptopManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1.5f);
 
-        // Close laptop first 
         CloseLaptop();
-
-        // Mark quest complete 
+ 
         if (QuestManager.Instance != null)
             QuestManager.Instance.OnLaptopQuestComplete();
         else
             Debug.LogWarning("QuestManager not found!");
 
-        // Show result visualization 
-        // Keycard given AFTER player closes image 
         if (ResultVisualizationUI.Instance != null &&
             currentLevelData != null)
         {
             ResultVisualizationUI.Instance.ShowResult(
                 currentLevelData,
                 () =>
-                {
-                    // This fires when player taps X 
+                {   
                     GiveKeycardAfterResult();
                 });
         }
         else
-        {
-            // No result UI found
-            // give keycard directly 
+        { 
             GiveKeycardAfterResult();
         }
     }
@@ -198,7 +189,6 @@ public class LaptopManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(wrongFlashDuration);
         laptopPanelImage.color = originalPanelColor;
     }
-
     private IEnumerator ShakePanel()
     {
         if (laptopPanel == null) yield break;
@@ -240,7 +230,6 @@ public class LaptopManager : MonoBehaviour
         StopCoroutine("HideFeedback");
         StartCoroutine(HideFeedback());
     }
-
     private IEnumerator HideFeedback()
     {
         yield return new WaitForSecondsRealtime(feedbackDuration);

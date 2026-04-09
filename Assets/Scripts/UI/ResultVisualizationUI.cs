@@ -42,7 +42,7 @@ public class ResultVisualizationUI : MonoBehaviour
             closeButton.onClick.AddListener(
                 CloseResultPanel);
 
-        // Hide fade overlay ✓
+        // Hide fade overlay 
         if (fadeOverlay != null)
         {
             Color c = fadeOverlay.color;
@@ -61,14 +61,10 @@ public class ResultVisualizationUI : MonoBehaviour
     {
         if (levelData == null)
         {
-            // No result image assigned
-            // just fire callback 
             onClosed?.Invoke();
             return;
         }
 
-        // If no result image assigned
-        // skip panel and give keycard 
         if (levelData.resultImage == null)
         {
             onClosed?.Invoke();
@@ -120,7 +116,7 @@ public class ResultVisualizationUI : MonoBehaviour
 
     private IEnumerator FadeOutAndClose()
     {
-        // Fade out ✓
+        // Fade out 
         if (panelCanvasGroup != null)
         {
             float elapsed = 0f;
@@ -147,7 +143,6 @@ public class ResultVisualizationUI : MonoBehaviour
         if (UIManager.Instance != null)
             UIManager.Instance.ShowGameplayUI();
 
-        // Fire callback → gives keycard 
         onClosedCallback?.Invoke();
         onClosedCallback = null;
     }

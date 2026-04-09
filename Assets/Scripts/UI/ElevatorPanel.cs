@@ -24,7 +24,7 @@ public class ElevatorPanel : Interactable
     public string accessGrantedMessage = "Access Granted!";
 
     private Color originalPanelColor;
-    private bool showingStatus = false; // Prevents label hiding during status
+    private bool showingStatus = false; 
 
     private void Start()
     {
@@ -32,10 +32,8 @@ public class ElevatorPanel : Interactable
             originalPanelColor = panelImage.color;
     }
 
-    // Override OnLoseFocus to prevent hiding during status
     public override void OnLoseFocus()
     {
-        // Only hide label if not showing status
         if (!showingStatus)
         {
             if (rend != null && originalMaterial != null)
@@ -75,7 +73,6 @@ public class ElevatorPanel : Interactable
     {
         Keycard.Instance.UseKeycard();
 
-        // Show status and keep visible
         StartCoroutine(ShowStatus(accessGrantedMessage, unlockedColor));
 
         // Flash green
@@ -89,7 +86,6 @@ public class ElevatorPanel : Interactable
 
     private void OnKeycardDenied()
     {
-        // Show status and keep visible briefly
         StartCoroutine(ShowStatus(noKeycardMessage, lockedColor));
 
         // Flash red
@@ -99,12 +95,10 @@ public class ElevatorPanel : Interactable
         Debug.Log("No keycard!");
     }
 
-    // Shows status text for duration then resets
     private IEnumerator ShowStatus(string message, Color color)
     {
         showingStatus = true;
 
-        // Show world space label
         if (labelObject != null)
             labelObject.SetActive(true);
 
@@ -114,24 +108,20 @@ public class ElevatorPanel : Interactable
             labelText.color = color;
         }
 
-        // Show HUD label with status
         if (UIManager.Instance != null)
             UIManager.Instance.ShowInteractLabel(message);
 
         yield return new WaitForSecondsRealtime(2f);
 
-        // Reset world space label
         if (labelText != null)
         {
             labelText.text = interactLabel;
             labelText.color = Color.white;
         }
 
-        // Hide world space label
         if (labelObject != null)
             labelObject.SetActive(false);
 
-        // Hide HUD label
         if (UIManager.Instance != null)
             UIManager.Instance.HideInteractLabel();
 
