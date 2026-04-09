@@ -41230,7 +41230,7 @@ GameObject:
   - component: {fileID: 1490934207}
   - component: {fileID: 1490934206}
   m_Layer: 5
-  m_Name: Close (1)
+  m_Name: Close Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41300,9 +41300,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1190375875}
-        m_TargetAssemblyTypeName: LaptopManager, Assembly-CSharp
-        m_MethodName: CloseLaptop
+      - m_Target: {fileID: 1306950066}
+        m_TargetAssemblyTypeName: ResultVisualizationUI, Assembly-CSharp
+        m_MethodName: CloseResultPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

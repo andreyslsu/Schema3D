@@ -24,7 +24,7 @@ public class ResultVisualizationUI : MonoBehaviour
     public float fadeInDuration = 0.5f;
     public CanvasGroup panelCanvasGroup;
 
-    // Callback when player closes ✓
+    // Callback when player closes 
     private System.Action onClosedCallback;
 
     private void Awake()
@@ -77,7 +77,7 @@ public class ResultVisualizationUI : MonoBehaviour
 
         onClosedCallback = onClosed;
 
-        // Set content ✓
+        // Set content 
         if (resultImage != null)
             resultImage.sprite = levelData.resultImage;
 
@@ -93,15 +93,15 @@ public class ResultVisualizationUI : MonoBehaviour
                 ? "Your SQL query was executed.\nCheck the result below."
                 : levelData.resultDescription;
 
-        // Show panel ✓
+        // Show panel 
         resultPanel.SetActive(true);
 
-        // Pause game ✓
+        // Pause game 
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        // Hide gameplay UI ✓
+        // Hide gameplay UI 
         if (UIManager.Instance != null)
             UIManager.Instance.HideGameplayUI();
 

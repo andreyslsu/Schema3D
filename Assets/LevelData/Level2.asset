@@ -24,12 +24,6 @@ MonoBehaviour:
   - 'insert into employees(id, name, department)
 
     values (1, ''Anna'', ''finance'');'
-  - 'INSERT INTO EMPLOYEES(ID, NAME, DEPARTMENT)
-
-    VALUES (1, ''ANNA'', ''FINANCE'');'
-  - 'INSERT INTO EMPLOYEES (ID, NAME, DEPARTMENT)
-
-    VALUES (1, ''ANNA'', ''FINANCE'');'
   - 'insert into employees (id, name, department)
 
     values (1, ''anna'', ''finance'');'
@@ -37,7 +31,9 @@ MonoBehaviour:
 
     values (1, ''anna'', ''finance'');'
   - insert into employees(id, name, department) values (1, 'anna', 'finance');
-  - INSERT INTO EMPLOYEES (ID, NAME, DEPARTMENT) VALUES (1, 'ANNA', 'FINANCE');
-  - insert into employees(id, name, department) values (1, 'Anna', 'finance');
-  - insert into employees (id, name, department) values (1, 'Anna', 'finance');
   fragmentsRequired: 4
+  resultImage: {fileID: 21300000, guid: afc52bbc57dbd034c9a93a8e90c28464, type: 3}
+  resultTitle: Success...
+  resultDescription: 'Data added to the company database!
+
+'
