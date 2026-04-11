@@ -48646,7 +48646,7 @@ MonoBehaviour:
   fragmentClue: "Fragment 3 - Data Types\n\nCommon SQL data types:\nINT \u2192 whole
     numbers (age, id)\nVARCHAR(n) \u2192 strings, numbers\nDATE \u2192 stores dates\n\nThe
     columns found were:\nid int\nname varchar(50)\n\nlast fragment:\nfind and answer
-    minigame puzzle (hint: monitor)"
+    minigame (hint: monitor)"
 --- !u!4 &1699307184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9141498245154989028, guid: f71087e924b3d7f4989e0d3d5969dc4e, type: 3}
