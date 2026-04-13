@@ -54,7 +54,6 @@ public class GameOverUI : MonoBehaviour
             mainMenuButton.onClick.AddListener(ReturnToMainMenu);
     }
 
-    // Hides all UI elements
     private void HideAllElements()
     {
         if (gameOverTitleText != null)
@@ -82,6 +81,9 @@ public class GameOverUI : MonoBehaviour
 
     public void ShowGameOver(string reason)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayGameOverJingle();
+
         LevelDialogue levelDialogue =
         FindFirstObjectByType<LevelDialogue>();
         if (levelDialogue != null)

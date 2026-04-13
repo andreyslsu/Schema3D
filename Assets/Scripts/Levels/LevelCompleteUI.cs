@@ -77,6 +77,10 @@ public class LevelCompleteUI : MonoBehaviour
     // =========================================
     public void ShowLevelComplete(LevelData levelData)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance
+                .PlayLevelCompleteJingle();
+
         currentLevelData = levelData;
 
         if (ScoreManager.Instance != null)
@@ -266,6 +270,9 @@ public class LevelCompleteUI : MonoBehaviour
         // Pop in each star
         if (starCount >= 1)
         {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayStarEarn();
+
             SetStarColor(star1, true);
             star1.SetActive(true);
             yield return new WaitForSecondsRealtime(0.3f);
@@ -278,6 +285,9 @@ public class LevelCompleteUI : MonoBehaviour
 
         if (starCount >= 2)
         {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayStarEarn();
+
             SetStarColor(star2, true);
             star2.SetActive(true);
             yield return new WaitForSecondsRealtime(0.3f);
@@ -290,6 +300,9 @@ public class LevelCompleteUI : MonoBehaviour
 
         if (starCount >= 3)
         {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayStarEarn();
+
             SetStarColor(star3, true);
             star3.SetActive(true);
         }

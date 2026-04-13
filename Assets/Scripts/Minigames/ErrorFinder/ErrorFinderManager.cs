@@ -165,6 +165,9 @@ public class ErrorFinderManager : MonoBehaviour
         Button btn,
         ErrorFinderData.SQLWord word)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayErrorFound();
+
         // Mark as found
         btn.image.color = errorFoundColor;
         btn.interactable = false;
@@ -192,6 +195,9 @@ public class ErrorFinderManager : MonoBehaviour
 
     private IEnumerator HandleWrongTap(Button btn)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayWrongAnswer();
+
         btn.image.color = wrongClickColor;
 
         ShowFeedback(currentData.wrongFeedback, Color.red);

@@ -124,6 +124,9 @@ public class DialogueCharacter : MonoBehaviour
      List<DialogueLine> lines,
      System.Action onComplete = null)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayDialogueOpen();
+
         StopAllCoroutines();
         dialogueQueue.Clear();
 
@@ -203,6 +206,9 @@ public class DialogueCharacter : MonoBehaviour
     {
         if (!isShowing) return;
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayDialogueNext();
+
         if (isTyping)
         {
             // Skip typing show full text 
@@ -230,6 +236,9 @@ public class DialogueCharacter : MonoBehaviour
 
     private void EndDialogue()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayDialogueClose();
+
         isShowing = false;
         dialoguePanel.SetActive(false);
 

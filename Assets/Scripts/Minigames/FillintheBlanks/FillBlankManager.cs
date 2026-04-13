@@ -172,6 +172,8 @@ public class FillBlankManager : MonoBehaviour
 
     private IEnumerator HandleCorrect(string choice)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayCorrectAnswer();
         // Flash green CORRECT ANSWER
         if (panelImage != null)
         {
@@ -218,6 +220,9 @@ public class FillBlankManager : MonoBehaviour
 
     private IEnumerator HandleWrong(string choice)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayWrongAnswer();
+
         // Flash red IF MALI
         if (panelImage != null)
         {

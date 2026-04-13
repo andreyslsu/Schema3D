@@ -221,6 +221,9 @@ public class TypeMatchManager : MonoBehaviour
     private IEnumerator HandleCorrectMatch(
         Button leftBtn, Button rightBtn, string typeText)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayMatchCorrect();
+
         // Mark both as matched
         leftBtn.image.color = matchedColor;
         rightBtn.image.color = matchedColor;
@@ -248,6 +251,8 @@ public class TypeMatchManager : MonoBehaviour
 
     private IEnumerator HandleWrongMatch(Button rightBtn)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayMatchWrong();
         // Flash wrong color
         rightBtn.image.color = wrongColor;
         selectedLeftButton.image.color = wrongColor;

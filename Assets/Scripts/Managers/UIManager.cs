@@ -63,6 +63,9 @@ public class UIManager : MonoBehaviour
     // =========================================
     public void ShowFragment(string clue)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayPanelOpen();
+
         fragmentPanel.SetActive(true);
         clueText.text = clue;
         HideInteractLabel(); 
@@ -70,6 +73,9 @@ public class UIManager : MonoBehaviour
 
     public void CloseFragment()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayPanelClose();
+
         fragmentPanel.SetActive(false);
         //Time.timeScale = 1f; // Resume game
     }
@@ -132,6 +138,9 @@ public class UIManager : MonoBehaviour
     // =========================================
     public void ShowKeycardPanel()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayKeycardReceive();
+
         if (keycardPanel != null)
         {
             keycardPanel.SetActive(true);
@@ -233,6 +242,9 @@ public class UIManager : MonoBehaviour
     // =========================================
     public void PauseGame()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayPanelOpen();
+
         pauseMenuPanel.SetActive(true);
         Time.timeScale = 0f;
         Cursor.visible = true;

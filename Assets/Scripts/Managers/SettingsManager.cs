@@ -8,11 +8,13 @@ public class SettingsManager : MonoBehaviour
 
     [Header("UI References - Assign in Inspector")]
     public Slider volumeSlider;       
-    public Slider sensitivitySlider;  
+    public Slider sensitivitySlider;   
+    public Slider sfxVolumeSlider;
 
     [Header("Default Values")]
     public float defaultVolume = 1f;
     public float defaultSensitivity = 2f;
+    public float defaultsfx = 2f;
 
     private void Awake()
     {
@@ -72,6 +74,10 @@ public class SettingsManager : MonoBehaviour
 
     public void SetVolume(float value)
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance
+                .SetMusicVolume(value);
+
         Debug.Log("SetVolume received: " + value);
 
         AudioListener.volume = value;
@@ -94,6 +100,16 @@ public class SettingsManager : MonoBehaviour
         Debug.Log("Sensitivity verified in PlayerPrefs: " + PlayerPrefs.GetFloat("MouseSensitivity"));
 
     }
+//sound effex
+    public void SetSFXVolume(float value)
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance
+                .SetSFXVolume(value);
+
+        PlayerPrefs.SetFloat("SFXVolume", value);
+        PlayerPrefs.Save();
+    }
 
     public void RegisterSliders(Slider volSlider, Slider sensSlider)
     {
@@ -101,4 +117,5 @@ public class SettingsManager : MonoBehaviour
         sensitivitySlider = sensSlider;
 
     }
+
 }

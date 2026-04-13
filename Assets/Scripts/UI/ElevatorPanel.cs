@@ -71,6 +71,9 @@ public class ElevatorPanel : Interactable
 
     private void OnKeycardAccepted()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayKeycardAccepted();
+
         Keycard.Instance.UseKeycard();
 
         StartCoroutine(ShowStatus(accessGrantedMessage, unlockedColor));
@@ -86,6 +89,9 @@ public class ElevatorPanel : Interactable
 
     private void OnKeycardDenied()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayKeycardDenied();
+
         StartCoroutine(ShowStatus(noKeycardMessage, lockedColor));
 
         // Flash red

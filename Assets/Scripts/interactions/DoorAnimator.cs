@@ -122,6 +122,10 @@ public class DoorAnimator : MonoBehaviour
     {
         if (isOpen || isAnimating) return;
         isOpen = true;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayDoorOpen();
+
         StartCoroutine(AnimateDoor(true));
 
         if (autoClose)
@@ -132,6 +136,10 @@ public class DoorAnimator : MonoBehaviour
     {
         if (!isOpen || isAnimating) return;
         isOpen = false;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayDoorClose();
+
         StartCoroutine(AnimateDoor(false));
     }
 

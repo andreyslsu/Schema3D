@@ -48,6 +48,9 @@ public class LaptopManager : MonoBehaviour
 
     public void OpenLaptop()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayLaptopOpen();
+
         laptopPanel.SetActive(true);
 
         laptopInput.text = "";
@@ -116,12 +119,18 @@ public class LaptopManager : MonoBehaviour
 
         if (correct)
         {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayLaptopCorrect();
+
             ShowFeedback("Yessir! Level Complete!", Color.green);
             StartCoroutine(FlashPanel(Color.green));
             StartCoroutine(TriggerLevelComplete());
         }
         else
         {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayLaptopWrong();
+
             ShowFeedback("FAHHHH! Check your fragments!", Color.red);
             StartCoroutine(FlashPanel(Color.red));
             StartCoroutine(ShakePanel());

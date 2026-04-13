@@ -113,6 +113,9 @@ public class Elevator : MonoBehaviour
 
     private IEnumerator TriggerLevelComplete()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayElevatorDing();
+
         yield return new WaitForSeconds(levelCompleteDelay);
 
         if (LevelCompleteUI.Instance != null)

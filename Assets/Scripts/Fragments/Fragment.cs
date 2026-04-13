@@ -7,6 +7,12 @@ public class Fragment : Interactable
 
     public override void Interact()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayFragmentPickup();
+
+        InventoryManager.Instance.AddFragment(
+            fragmentClue);
+
         // add inventory
         InventoryManager.Instance.AddFragment(fragmentClue);
 
