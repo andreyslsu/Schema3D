@@ -18,11 +18,13 @@ MonoBehaviour:
   - www
   - WWW
   - '"www"'
-  - create database company_db; create table employees (id int, name varchar(50),
+  - create database company_db; create table employees (id int(11), name varchar(50),
     department varchar(30));
-  - create database company_db; create table employees (id int, name varchar(50),
+  - create database company_db; create table employees (id int(11), name varchar(50),
     department varchar(30));
-  - "create database company_db; \n\ncreate table employees ( \n\tid int, \n\tname
+  - "create database company_db; \n\ncreate table employees ( \n\tid int(11), \n\tname
+    varchar(50), \n\tdepartment varchar(30) \n);"
+  - "create database company_db; \n\ncreate table employees( \n\tid int, \n\tname
     varchar(50), \n\tdepartment varchar(30) \n);"
   fragmentsRequired: 4
   resultImage: {fileID: 21300000, guid: f66c10c85fbdd014d8523f49ea764200, type: 3}

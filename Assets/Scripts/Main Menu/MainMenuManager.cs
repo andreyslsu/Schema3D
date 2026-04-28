@@ -9,7 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject levelSelectPanel;
     public GameObject leaderboardPanel;
-    public GameObject signoutPanel;
+    public GameObject signinPanel;
     public GameObject quitPanel;
 
     [Header("Settings Sliders")]
@@ -216,14 +216,14 @@ public class MainMenuManager : MonoBehaviour
     // =========================================
     // signin
     // =========================================
-    public void OpenSignout()
+    public void OpenSignin()
     {
-        signoutPanel.SetActive(true);
+        signinPanel.SetActive(true);
     }
 
-    public void CloseSignout()
+    public void CloseSignin()
     {
-        signoutPanel.SetActive(false);
+        signinPanel.SetActive(false);
     }
 
     public void LoadSign(string SignIn)
