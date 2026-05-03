@@ -122,7 +122,7 @@ public class LaptopManager : MonoBehaviour
             if (AudioManager.Instance != null)
                 AudioManager.Instance.PlayLaptopCorrect();
 
-            ShowFeedback("Yessir! Level Complete!", Color.green);
+            ShowFeedback("Amazing! Level Complete!", Color.green);
             StartCoroutine(FlashPanel(Color.green));
             StartCoroutine(TriggerLevelComplete());
         }
