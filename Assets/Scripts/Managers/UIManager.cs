@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
     public GameObject pauseButton;
 
     [Header("Settings Sliders")]
+    public GameObject settingsPanel;
     public Slider volumeSlider;      
     public Slider sensitivitySlider; 
 
@@ -286,6 +287,16 @@ public class UIManager : MonoBehaviour
     {
         ResetState();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void openSettings()
+    {
+        settingsPanel.gameObject.SetActive(true);
+    }
+
+    public void closeSettings() 
+    {
+        settingsPanel.gameObject.SetActive(false);
     }
 
     public void SetVolume(float value)
