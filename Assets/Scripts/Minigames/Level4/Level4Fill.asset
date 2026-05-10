@@ -20,7 +20,7 @@ MonoBehaviour:
   - UPDATE
   - MODIFY
   correctAnswer: UPDATE
-  rewardFragment: 'Fragment 4 - Final SQL Piece
+  rewardFragment: 'Fragment 3 - Final SQL Piece
 
 
     VALUES (1, ''Anna'', ''finance'')
