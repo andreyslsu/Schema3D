@@ -16257,14 +16257,21 @@ MonoBehaviour:
   mainMenuMusic: {fileID: 8300000, guid: 8313370ebf8f8104b8f66eaf81570d03, type: 3}
   level1Music: {fileID: 8300000, guid: f27030fad91c5dd4683036c05b2a6d62, type: 3}
   level2Music: {fileID: 8300000, guid: 22f30b513e8962749b500e145ca1b718, type: 3}
-  level3Music: {fileID: 0}
+  level3Music: {fileID: 8300000, guid: 62f48cd1dafc84342affca1174265cd1, type: 3}
+  level4Music: {fileID: 8300000, guid: 922f409dc0f41094f8e536d09c394e88, type: 3}
+  level5Music: {fileID: 0}
+  level6Music: {fileID: 0}
+  level7Music: {fileID: 0}
+  level8Music: {fileID: 0}
+  level9Music: {fileID: 0}
+  level10Music: {fileID: 0}
   bossMusic: {fileID: 0}
   levelCompleteMusic: {fileID: 8300000, guid: bf3cd88a14740914c9b93746e17bd6bc, type: 3}
   gameOverMusic: {fileID: 8300000, guid: 95823753f45b7e9409e97add663432d6, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: bedd0eed9c68a6643a8663c9a65930ff, type: 3}
   panelOpenSFX: {fileID: 8300000, guid: f84632d44c09add47acd9364ceb3f44f, type: 3}
   panelCloseSFX: {fileID: 8300000, guid: c31760ae545ac674bb79033058a5fbde, type: 3}
-  tabSwitchSFX: {fileID: 0}
+  tabSwitchSFX: {fileID: 8300000, guid: 5a1e0fcfe3c0dbf4aaaec3503e7c7e17, type: 3}
   fragmentPickupSFX: {fileID: 8300000, guid: 51e5520f6982040468854bbd989afe6c, type: 3}
   keycardReceiveSFX: {fileID: 8300000, guid: fb8fe0b3b9cfbe0408183b0fba9c0e40, type: 3}
   keycardDeniedSFX: {fileID: 8300000, guid: 9d078d93c43bf0f42a28b29c83e3912d, type: 3}
@@ -16274,7 +16281,7 @@ MonoBehaviour:
   elevatorDingSFX: {fileID: 8300000, guid: eb49dfc30d6c3634c9d03e056ec071bc, type: 3}
   elevatorHumSFX: {fileID: 0}
   footstepSFX: {fileID: 8300000, guid: 631d7d887614072428b4a119cd0009be, type: 3}
-  laptopOpenSFX: {fileID: 0}
+  laptopOpenSFX: {fileID: 8300000, guid: a1193ede4d795fa42bf8a07cbd803632, type: 3}
   laptopTypingSFX: {fileID: 8300000, guid: d72df4a1c6447c546824b6ee9f4f20a5, type: 3}
   laptopCorrectSFX: {fileID: 8300000, guid: f5c03bab9c519ee41a98f53e8434faba, type: 3}
   laptopWrongSFX: {fileID: 8300000, guid: a8d70991665c6214baa46462663b670d, type: 3}
@@ -16282,16 +16289,16 @@ MonoBehaviour:
   correctAnswerSFX: {fileID: 8300000, guid: f5c03bab9c519ee41a98f53e8434faba, type: 3}
   wrongAnswerSFX: {fileID: 8300000, guid: a8d70991665c6214baa46462663b670d, type: 3}
   puzzleCompleteSFX: {fileID: 8300000, guid: f5c03bab9c519ee41a98f53e8434faba, type: 3}
-  buttonSelectSFX: {fileID: 0}
+  buttonSelectSFX: {fileID: 8300000, guid: 5520580b6cd955744bcfb612c2e8a3ae, type: 3}
   matchCorrectSFX: {fileID: 8300000, guid: f5c03bab9c519ee41a98f53e8434faba, type: 3}
   matchWrongSFX: {fileID: 8300000, guid: a8d70991665c6214baa46462663b670d, type: 3}
   errorFoundSFX: {fileID: 0}
-  dialogueOpenSFX: {fileID: 0}
-  dialogueCloseSFX: {fileID: 0}
+  dialogueOpenSFX: {fileID: 8300000, guid: cb7d4816004946d488937aff43d2762b, type: 3}
+  dialogueCloseSFX: {fileID: 8300000, guid: 649ce91d7eca4194d93707156d8cd4f1, type: 3}
   dialogueTypingSFX: {fileID: 8300000, guid: 89832c3557a20e14988b2e45c83f9b77, type: 3}
   dialogueNextSFX: {fileID: 8300000, guid: 8e2f26964a3999a4d878e4897a057cd4, type: 3}
   starEarnSFX: {fileID: 8300000, guid: 98e3ddae78a7ae54d9ac31d0912fb90a, type: 3}
-  scoreCountSFX: {fileID: 0}
+  scoreCountSFX: {fileID: 8300000, guid: 8c1ed7a658c3c91488c778563a41ad4f, type: 3}
   levelCompleteJingleSFX: {fileID: 8300000, guid: bf3cd88a14740914c9b93746e17bd6bc, type: 3}
   gameOverJingleSFX: {fileID: 8300000, guid: 95823753f45b7e9409e97add663432d6, type: 3}
   lobbyAmbienceSFX: {fileID: 0}

@@ -16,6 +16,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip level1Music;
     public AudioClip level2Music;
     public AudioClip level3Music;
+    public AudioClip level4Music;
+    public AudioClip level5Music;
+    public AudioClip level6Music;
+    public AudioClip level7Music;
+    public AudioClip level8Music;
+    public AudioClip level9Music;
+    public AudioClip level10Music;
     public AudioClip bossMusic;
     public AudioClip levelCompleteMusic;
     public AudioClip gameOverMusic;
@@ -373,6 +380,34 @@ public class AudioManager : MonoBehaviour
                 break;
             case "Level3":
                 PlayMusic(level3Music);
+                PlayAmbience(officeAmbienceSFX);
+                break;
+            case "Level4":
+                PlayMusic(level4Music);
+                PlayAmbience(officeAmbienceSFX);
+                break;
+            case "Level5":
+                PlayMusic(level5Music);
+                PlayAmbience(officeAmbienceSFX);
+                break;
+            case "Level6":
+                PlayMusic(level6Music);
+                PlayAmbience(officeAmbienceSFX);
+                break;
+            case "Level7":
+                PlayMusic(level7Music);
+                PlayAmbience(officeAmbienceSFX);
+                break;
+            case "Level8":
+                PlayMusic(level8Music);
+                PlayAmbience(officeAmbienceSFX);
+                break;
+            case "Level9":
+                PlayMusic(level9Music);
+                PlayAmbience(officeAmbienceSFX);
+                break;
+            case "Level10":
+                PlayMusic(level10Music);
                 PlayAmbience(officeAmbienceSFX);
                 break;
             default:
