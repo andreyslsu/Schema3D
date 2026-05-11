@@ -163,13 +163,12 @@ public class LevelCompleteUI : MonoBehaviour
             timeText.text = "Completed in: " +
                 string.Format("{0:00}:{1:00}", minutes, seconds);
 
-            // Color based on speed 
             if (time <= 120f)           
                 timeText.color = Color.green;
             else if (time <= 300f)     
                 timeText.color = Color.yellow;
             else
-                timeText.color = Color.white;
+                timeText.color = Color.red;
         }
 
         yield return new WaitForSecondsRealtime(resultDelay);
