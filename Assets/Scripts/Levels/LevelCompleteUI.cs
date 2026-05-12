@@ -160,7 +160,7 @@ public class LevelCompleteUI : MonoBehaviour
             int seconds = Mathf.FloorToInt(time % 60);
 
             // Show as completion time 
-            timeText.text = "Completed in: " +
+            timeText.text = "Time: " +
                 string.Format("{0:00}:{1:00}", minutes, seconds);
 
             if (time <= 120f)           
