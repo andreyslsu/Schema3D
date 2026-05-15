@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
 
             if (keycardText != null)
-                keycardText.text = "ACCESS KEYCARD\nFind the elevator\nand insert this keycard\nto proceed.";
+                keycardText.text = "ACCESS KEYCARD\nFind the elevator\nand tap this keycard\nto proceed.";
         }
         else
             Debug.LogWarning("KeycardPanel is NULL!");
