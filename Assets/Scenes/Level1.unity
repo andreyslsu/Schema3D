@@ -12305,12 +12305,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 14
+  m_fontSizeMax: 20
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -12375,7 +12375,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 800, y: 370}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &414076395
 PrefabInstance:
@@ -13269,10 +13269,29 @@ MonoBehaviour:
   interactLabel: Fragment
   labelObject: {fileID: 0}
   labelText: {fileID: 0}
-  fragmentClue: "Fragment 2 - Table Structure\n\nA TABLE stores data in rows and
-    columns like a spreadsheet.\n\nTo create one:\nCREATE TABLE table_name (\n  column_name
-    datatype);\n\nThe hacker created a table called: 'employees'\n\nnext fragment:\n'Where
-    papers rest and workers type all day, search the office desk to find the way'"
+  fragmentClue: 'Fragment 2 - Table Structure
+
+
+    A TABLE stores data in rows and
+    columns like a spreadsheet.
+
+
+    To create one:
+
+    CREATE TABLE table_name
+    (
+
+    column_name datatype);
+
+
+    The hacker created a table called: ''employees''
+
+
+    next
+    fragment:
+
+    ''Where papers rest and workers type all day, search the office
+    desk to find the way'''
 --- !u!4 &435949627 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9141498245154989028, guid: f71087e924b3d7f4989e0d3d5969dc4e, type: 3}
@@ -22128,7 +22147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9716981, g: 0.7502325, b: 0.09625311, a: 0.95686275}
+  m_Color: {r: 1, g: 0.92514044, b: 0.7028302, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
