@@ -13,7 +13,7 @@ public class FillBlankInteractable : Interactable
 
     private void Start()
     {
-        interactLabel = "Solve Puzzle";
+        interactLabel = "Solve Mini Game";
 
         // Hide solved indicator at start
         if (solvedIndicator != null)

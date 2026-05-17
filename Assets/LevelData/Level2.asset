@@ -31,9 +31,11 @@ MonoBehaviour:
 
     values (1, ''anna'', ''finance'');'
   - insert into employees(id, name, department) values (1, 'anna', 'finance');
+  - WWW
+  - www
   fragmentsRequired: 4
   resultImage: {fileID: 21300000, guid: db61169e8dc647a4889ffe0ae15044a4, type: 3}
-  resultTitle: Success...
+  resultTitle: FRAGMENTS SYNCHRONIZED!
   resultDescription: 'Data added to the company database!
 
 '

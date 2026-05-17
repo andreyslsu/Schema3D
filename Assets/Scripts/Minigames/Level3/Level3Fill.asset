@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa15c26f164cac4784d88afaca94aa9, type: 3}
   m_Name: Level3Fill
   m_EditorClassIdentifier: Assembly-CSharp::FillBlankData
-  questionText: The ______ clause is used to filter records in a SELECT statement.
+  questionText: The _ clause is used to filter records in a SELECT statement.
   blankPlaceholder: _
   choices:
   - GROUP BY

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa15c26f164cac4784d88afaca94aa9, type: 3}
   m_Name: Level2Fill
   m_EditorClassIdentifier: Assembly-CSharp::FillBlankData
-  questionText: 'INSERT ___ table_name
+  questionText: 'INSERT _ table_name
 
     VALUES (value1, value2, value3, ...);'
   blankPlaceholder: _

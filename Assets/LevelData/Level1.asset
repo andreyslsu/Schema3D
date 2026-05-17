@@ -28,5 +28,5 @@ MonoBehaviour:
     varchar(50), \n\tdepartment varchar(30) \n);"
   fragmentsRequired: 4
   resultImage: {fileID: 21300000, guid: f66c10c85fbdd014d8523f49ea764200, type: 3}
-  resultTitle: Success...
+  resultTitle: FRAGMENTS SYNCHRONIZED!
   resultDescription: Database and Table successfully created.
